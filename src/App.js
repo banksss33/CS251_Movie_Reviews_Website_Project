@@ -9,6 +9,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Carousel from 'react-bootstrap/Carousel';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap'
 import Hub from './Page/Homepage';
 import SignIn from './Page/Login';
 import NavbarMenu from './Page/NavbarMenu';
@@ -18,7 +19,9 @@ function App() {
   
    <BrowserRouter>
       <Navbar bg="dark" variant="dark"> 
-        <Navbar.Brand style={{paddingLeft: '360px'}} href="#"><Link to="/">Blockbuster</Link></Navbar.Brand>
+      <LinkContainer to="/">
+        <Navbar.Brand style={{paddingLeft: '360px'}} >Blockbuster</Navbar.Brand>
+        </LinkContainer>
         <Nav className="me-auto">
           <InputGroup className="ps-3">
             <DropdownButton variant="outline-warning" title="Search" bid="input-group-dropdown-1" >
@@ -34,7 +37,9 @@ function App() {
           </div>
         </Nav>
         <Nav className="justify-content-end">
-          <Nav.Link className="pe-5" href="#"><Link to="/SignIn">SignIn</Link></Nav.Link>
+        <LinkContainer to="/SignIn">
+          <Nav.Link className="pe-5" href="#">SignIn</Nav.Link>
+        </LinkContainer>
         </Nav>
       </Navbar>
       
