@@ -17,16 +17,27 @@ function App() {
   return (
   
    <BrowserRouter>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/SignIn">SignIn</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navbar bg="dark" variant="dark"> 
+        <Navbar.Brand style={{paddingLeft: '360px'}} href="#"><Link to="/">Blockbuster</Link></Navbar.Brand>
+        <Nav className="me-auto">
+          <InputGroup className="ps-3">
+            <DropdownButton variant="outline-warning" title="Search" bid="input-group-dropdown-1" >
+              <Dropdown.Item href="#">Actor</Dropdown.Item>
+              <Dropdown.Item href="#">Movie</Dropdown.Item>
+              <Dropdown.Item href="#">TV Series</Dropdown.Item>
+            </DropdownButton>
+          <Form.Control aria-label="Search input"/>
+        </InputGroup>
+
+          <div className="ps-5" href="#"> 
+            <Button variant="outline-warning">All Movie</Button>{' '} 
+          </div>
+        </Nav>
+        <Nav className="justify-content-end">
+          <Nav.Link className="pe-5" href="#"><Link to="/SignIn">SignIn</Link></Nav.Link>
+        </Nav>
+      </Navbar>
+      
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />

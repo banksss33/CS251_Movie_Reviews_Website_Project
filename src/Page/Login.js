@@ -56,16 +56,16 @@ function SignIn({ name, ...props }) {
                     style={{
                         maxHeight: '80vh',
                         height: '80vh',
-                        
                         width: '50%',
                         padding : '40px',
                         borderRadius: '10px 10px 0 0',
                         position: "fixed",
-                        left: "50%",
+                        marginLeft: "25%",
                         bottom: "0",
-                        transform: "translateX(-50%)",
-                        // transform: "translateX(-50%) translateY(100%)",
-                        // transition: "transform 0.3s ease-in-out",
+                        transform: "translateY(-50%)",
+                        transform: `translateY(${show ? 0 : '100%'})`,
+                        transition: 'transform 0.83s ease-in-out'
+
                     }}>
                     <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Register</Offcanvas.Title>
