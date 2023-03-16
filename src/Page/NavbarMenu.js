@@ -29,7 +29,7 @@ function NavbarMenu() {
         </InputGroup>
 
           <div className="ps-5" href="#"> 
-            <Button variant="outline-warning">Review</Button>{' '} 
+            <Button variant="outline-warning">All Movie</Button>{' '} 
           </div>
         </Nav>
         <Nav className="justify-content-end">
