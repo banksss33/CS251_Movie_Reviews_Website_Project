@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import InputGroup from "react-bootstrap/InputGroup";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
@@ -14,10 +14,8 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar bg="dark" variant="dark">
-        <LinkContainer to="/">
-          <Navbar.Brand style={{ paddingLeft: "360px" }}>
-            Blockbuster
-          </Navbar.Brand>
+        <LinkContainer to="/" style={{ paddingLeft: "360px" }}>
+          <Navbar.Brand>Blockbuster</Navbar.Brand>
         </LinkContainer>
         <Nav className="me-auto">
           <InputGroup className="ps-3">
