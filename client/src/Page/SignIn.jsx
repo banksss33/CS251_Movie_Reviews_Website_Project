@@ -49,7 +49,7 @@ function SignIn({ name, ...props }) {
             </div>
 
             {/* Submit button*/}
-            <Button type="submit" class="btn">Login</Button>
+            <Button type="submit" class="btn btn-outline-warning">Login</Button>
 
           </Form>
         </div>
