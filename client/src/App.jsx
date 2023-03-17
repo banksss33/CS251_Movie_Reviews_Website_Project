@@ -12,7 +12,7 @@ import SignIn from "./Page/SignIn";
 import MovieDisplay from "./Page/Moviepage";
 
 // test database
-import ShowAccount from "./account";
+import ShowAccount from "./component/account"
 
 function App() {
   return (
@@ -55,9 +55,6 @@ function App() {
       </Routes>
 
 
-      {/* Very Impotant */}
-      {/* test database */}
-      <ShowAccount/>
     </BrowserRouter>
   );
 }
