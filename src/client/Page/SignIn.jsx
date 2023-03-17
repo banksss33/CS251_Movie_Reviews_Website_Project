@@ -22,6 +22,7 @@ function SignIn({ name, ...props }) {
           backgroundColor: "#FFF",
           padding: "40px",
           width: "50%",
+          borderRadius: '20px',
         }}
       >
         <p style={{ textAlign: "center" }}>Sign In</p>
