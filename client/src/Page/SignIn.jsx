@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import ShowAccount from "../component/account";
+import "../component/SignIn.css"
 
 function SignIn({ name, ...props }) {
   const [show, setShow] = useState(false);
@@ -13,52 +14,51 @@ function SignIn({ name, ...props }) {
     <div
       style={{
         padding: "100px",
-        paddingBottom: "200px",
-        backgroundColor: "rgb(0,22,22)",
+        paddingBottom: "500px",
+        background: "#3f3f42"
       }}
     >
       {/* container */}
-      <Container
-        style={{
-          backgroundColor: "#FFF",
-          padding: "40px",
-          width: "50%",
-          borderRadius: '20px',
-        }}
-      >
-        <p style={{ textAlign: "center" }}>Sign In</p>
-        <Form>
-          {/* Username Input*/}
-          <Form.Group className="mb-3" controlId="formUername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="Text" placeholder="Enter username" />
-            <Form.Text className="text-muted">wrong username</Form.Text>
-          </Form.Group>
+      <center>
+        <div class='box'>
+          <span class="borderLine"></span>
+          <Form>
+            <h2>Sign In</h2>
+            {/* Username Input*/}
+            <div class="inputBox">
+              <input type="text" required="required"></input>
+              <span>Username</span>
+              <i></i>
+            </div>
 
-          {/* Password Input */}
-          <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
+            {/* Password Input */}
+            <div class="inputBox">
+              <input type="password" required="required"></input>
+              <span>Password</span>
+              <i></i>
+            </div>
 
-          {/* Submit Button */}
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+            {/* Register */}
+            <div class="links">
+            <p>
+              no account?
+              <a variant="primary" onClick={handleShow} className="me-2">
+                register
+              </a>
+            </p>
+            </div>
+
+            {/* Submit button*/}
+            <Button type="submit" class="btn">Login</Button>
+
+          </Form>
+        </div>
+        </center>
 
         {/* Very Impotant */}
         {/* test database */}
         {/* <ShowAccount/> */}
 
-        <center>
-          <p>
-            no account?
-            <a variant="primary" onClick={handleShow} className="me-2">
-              register
-            </a>
-          </p>
-        </center>
 
         {/* pop up register */}
         <Offcanvas
@@ -137,7 +137,6 @@ function SignIn({ name, ...props }) {
             </Form>
           </Offcanvas.Body>
         </Offcanvas>
-      </Container>
     </div>
   );
 }
