@@ -1,4 +1,5 @@
 import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -12,38 +13,65 @@ import SignIn from "./Page/SignIn";
 import MovieDisplay from "./Page/Moviepage";
 
 // test database
-import ShowAccount from "./component/account"
+import ShowAccount from "./component/account";
 
 function App() {
+  const [selectedTitle, setSelectedTitle] = useState("All");
+
+  const handleSelect = (eventKey) => {
+    setSelectedTitle(eventKey);
+  };
   return (
     <BrowserRouter>
-      <Navbar bg="dark" variant="dark">
-        <LinkContainer to="/" style={{ paddingLeft: "360px" }}>
+      <Navbar
+        bg="dark"
+        variant="dark"
+        className="d-flex justify-content-center"
+        style={{
+          paddingLeft: "40px",
+          paddingRight: "40px",
+        }}
+      >
+        <LinkContainer to="/">
           <Navbar.Brand>Blockbuster</Navbar.Brand>
         </LinkContainer>
-        <Nav className="me-auto">
-          <InputGroup className="ps-3">
+
+        <Nav className="flex-grow-1">
+          <InputGroup>
             <DropdownButton
               variant="outline-warning"
-              title="Search"
-              bid="input-group-dropdown-1"
+              title={selectedTitle}
+              id="input-group-dropdown-1"
+              onSelect={handleSelect}
             >
-              <Dropdown.Item href="#">Actor</Dropdown.Item>
-              <Dropdown.Item href="#">Movie</Dropdown.Item>
-              <Dropdown.Item href="#">TV Series</Dropdown.Item>
+              <Dropdown.Item eventKey="All" href="#">
+                All
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="Actor" href="#">
+                Actor
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="Movie" href="#">
+                Movie
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="TV Series" href="#">
+                TV Series
+              </Dropdown.Item>
             </DropdownButton>
             <Form.Control aria-label="Search input" />
           </InputGroup>
-
-          <div className="ps-5" href="#">
-            <Button variant="outline-warning">All Movie</Button>{" "}
-          </div>
         </Nav>
-        <Nav className="justify-content-end">
+
+        <Nav
+          style={{
+            marginLeft: "100px",
+          }}
+        >
+          <LinkContainer to="">
+            <Nav.Link>Watch list</Nav.Link>
+          </LinkContainer>
+
           <LinkContainer to="/SignIn">
-            <Nav.Link className="pe-5" href="#">
-              SignIn
-            </Nav.Link>
+            <Nav.Link>SignIn</Nav.Link>
           </LinkContainer>
         </Nav>
       </Navbar>
@@ -51,10 +79,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/Movie" element={<MovieDisplay />}/>
+        <Route path="/Movie" element={<MovieDisplay />} />
       </Routes>
-
-
     </BrowserRouter>
   );
 }
