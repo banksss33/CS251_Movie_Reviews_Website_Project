@@ -11,6 +11,9 @@ import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
 import MovieDisplay from "./Page/Moviepage";
 
+// test database
+import ShowAccount from "./account";
+
 function App() {
   return (
     <BrowserRouter>
@@ -50,6 +53,11 @@ function App() {
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/Movie" element={<MovieDisplay />}/>
       </Routes>
+
+
+      {/* Very Impotant */}
+      {/* test database */}
+      <ShowAccount/>
     </BrowserRouter>
   );
 }
