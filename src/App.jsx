@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
+import MovieDisplay from "./Page/Moviepage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/Movie" element={<MovieDisplay />}/>
       </Routes>
     </BrowserRouter>
   );
