@@ -14,7 +14,7 @@ function SignIn({ name, ...props }) {
     <div
       style={{
         padding: "100px",
-        paddingBottom: "500px",
+        paddingBottom: "450px",
         background: "#3f3f42"
       }}
     >

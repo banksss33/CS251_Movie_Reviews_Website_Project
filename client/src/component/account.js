@@ -3,8 +3,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function ShowAccount() {
+
+    // กำหนดค่าไว้ดึงข้อมูล
     const [accountList, setAccountList] = useState([]);
 
+    // ฟังก์ชั่น รับค่ามาจาก path
     function getAccount() {
         axios.get('http://localhost:3001/showmember').then((response) => {
             setAccountList(response.data);

@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
-import MovieDisplay from "./Page/Moviepage";
+import Moviepage from "./Page/Moviepage";
 
 // test database
 import ShowAccount from "./component/account";
@@ -66,7 +66,7 @@ function App() {
             marginLeft: "100px",
           }}
         >
-          <LinkContainer to="">
+          <LinkContainer to="/WatchList">
             <Nav.Link>Watch list</Nav.Link>
           </LinkContainer>
 
@@ -79,7 +79,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/Movie" element={<MovieDisplay />} />
+        <Route path="/WatchList" element={<Moviepage />} />
       </Routes>
     </BrowserRouter>
   );

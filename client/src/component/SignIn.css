@@ -54,7 +54,7 @@ body {
     inset: 0;
 }
 
-.borderLine::before {
+/* .borderLine::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -82,7 +82,7 @@ body {
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
     animation-delay: -4.5s;
-}
+} */
 
 @keyframes animate {
     0%
