@@ -27,6 +27,16 @@ app.get('/showmember', (req, res) => {
     })
 })
 
+app.get('/ctList', (req, res) => {
+    db.query("SELECT * FROM movie", (err, result) => {
+        if (err) {
+            console.log(err + "select movie error");
+        } else {
+            res.send(result);
+        }
+    })
+})
+
 app.listen(3001, () => {
     console.log('server running on port 3001')
 })
