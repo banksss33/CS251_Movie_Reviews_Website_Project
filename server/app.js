@@ -27,7 +27,7 @@ app.get('/showmmber', (req, res) => {
     })
 })
 
-app.get('/CarouselData', (req, res) => {
+app.get('/ctList', (req, res) => {
     db.query("SELECT * FROM movie", (err, result) => {
         if (err) {
             console.log(err + "select movie error");

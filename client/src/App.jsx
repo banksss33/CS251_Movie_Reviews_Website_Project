@@ -14,7 +14,7 @@ import Moviepage from "./Page/Moviepage";
 
 // test database
 import ShowAccount from "./component/account";
-import CarouselData from "./component/CarouselData";
+import CarouselData from "./component/ShowCarousel";
 
 function App() {
   const [selectedTitle, setSelectedTitle] = useState("All");
