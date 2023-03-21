@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import ShowAccount from "../component/account";
 import "../component/SignIn.css"
 
 function SignIn({ name, ...props }) {
@@ -85,56 +84,49 @@ function SignIn({ name, ...props }) {
           </Offcanvas.Header>
           {/* register */}
           <Offcanvas.Body>
+            <div>
             <Form>
               {/* Username Input*/}
-              <Form.Group className="mb-3" controlId="RegisterEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                  this email already use
-                </Form.Text>
-              </Form.Group>
+              <div class="row">
+                <div class="row g-3">
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerEmail">Email</label>
+                  <input type="email" id="registerEmail" class="form-control" placeholder="Email" aria-label="City"/>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerfName">First name</label>
+                  <input type="text" id="registerfName" class="form-control" placeholder="Enter your first name" aria-label="City"/>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerlName">Last name</label>
+                  <input type="text" id="registerlName" class="form-control" placeholder="Enter your last name" aria-label="City"/>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerUsername">Username</label>
+                  <input type="text" id="registerUsername" class="form-control" placeholder="Enter your username" aria-label="City"/>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerPassword">Password</label>
+                  <input type="text" id="registerPassword" class="form-control" placeholder="Enter your password" aria-label="City"/>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerCPassword">Confirm password</label>
+                  <input type="text" id="registerCPassword" class="form-control" placeholder="Comfirm password" aria-label="City"/>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label" for="registerNickname">Nick name</label>
+                  <input type="text" id="registerNickname" class="form-control" placeholder="Enter your nick name" aria-label="City"/>
+                </div>
 
-              {/* Password Input */}
-              <Form.Group className="mb-3" controlId="formFirstname">
-                <Form.Label>first name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your first name" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formLastname">
-                <Form.Label>last name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your last name" />
-              </Form.Group>
-
-              <Form.Group className="mb-3" controlId="formUername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="Text" placeholder="Enter username" />
-                <Form.Text className="text-muted">wrong username</Form.Text>
-              </Form.Group>
-
-              {/* Password Input */}
-              <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-
-              {/* Confirm Password Input */}
-              <Form.Group className="mb-3" controlId="formConfirmPassword">
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" placeholder="Confirm Password" />
-              </Form.Group>
-
-              {/* Nick name Input */}
-              <Form.Group className="mb-3" controlId="formNickname">
-                <Form.Label>Nick name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your nick name" />
-              </Form.Group>
+              </div>
+              </div>
 
               {/* Submit Button */}
-              <Button variant="primary" type="submit">
+              <Button type="submit">
                 Submit
               </Button>
             </Form>
+            </div>
           </Offcanvas.Body>
         </Offcanvas>
     </div>
