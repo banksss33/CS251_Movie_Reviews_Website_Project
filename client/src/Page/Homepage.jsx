@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import { Row } from "react-bootstrap";
 import "../component/Carousel.css";
+import CarouselData from "../component/CarouselData";
 
 const newItem = [
   //New Movie data that pass to carousel
@@ -74,21 +75,7 @@ function Hub() {
             <h1>New</h1>
           </span>{" "}
           {/* Container3 */}
-          <Carousel fade>
-            {newItem.map((MItems) => (
-              <Carousel.Item key={MItems.id}>
-                <img
-                  className="d-block w-100 rounded-5"
-                  src={MItems.image}
-                  alt="Data not found!"
-                />
-                <Carousel.Caption>
-                  <h3>{MItems.chead}</h3>
-                  <p>{MItems.desc}</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
+          <CarouselData />
         </Row>{" "}
         {/*Popular*/}
         <Row className="mt-5">
@@ -97,21 +84,7 @@ function Hub() {
             <h1>Popular</h1>
           </span>
           {/* Container3 */}
-          <Carousel fade>
-            {popuItem.map((popuItems) => (
-              <Carousel.Item key={popuItems.id}>
-                <img
-                  className="d-block w-100 rounded-5"
-                  src={popuItems.image}
-                  alt="Data not found!"
-                />
-                <Carousel.Caption>
-                  <h3>{popuItems.chead}</h3>
-                  <p>{popuItems.desc}</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </Carousel>
+          <CarouselData />
         </Row>
       </Container>
     </div>

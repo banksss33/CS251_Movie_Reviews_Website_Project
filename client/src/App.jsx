@@ -14,6 +14,7 @@ import Moviepage from "./Page/Moviepage";
 
 // test database
 import ShowAccount from "./component/account";
+import CarouselData from "./component/CarouselData";
 
 function App() {
   const [selectedTitle, setSelectedTitle] = useState("All");
@@ -82,7 +83,10 @@ function App() {
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/WatchList" element={<Moviepage />} />
       </Routes>
+      
     </BrowserRouter>
+
+    
   );
 }
 
