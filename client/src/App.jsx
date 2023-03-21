@@ -65,6 +65,7 @@ function App() {
           style={{
             marginLeft: "100px",
           }}
+          className="border-start border-secondary rounded-0"
         >
           <LinkContainer to="/WatchList">
             <Nav.Link>Watch list</Nav.Link>

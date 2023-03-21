@@ -59,13 +59,18 @@ function Hub() {
       }}
       className="d-flex"
     >
-      <Container>
+      <Container
+        style={{
+          backgroundColor: "rgb(0,22,22)",
+        }}
+        className="p-3"
+      >
         {" "}
         {/* Container1 */}
         <Row>
           {" "}
           {/* Container2 */}
-          <span class="d-block p-2 bg-dark text-white">
+          <span className="d-inline p-2 mb-4 text-white border-start border-warning">
             <h1>New</h1>
           </span>{" "}
           {/* Container3 */}
@@ -88,7 +93,7 @@ function Hub() {
         {/*Popular*/}
         <Row className="mt-5">
           {/* Container2 */}
-          <span class="d-block p-2 bg-dark text-white">
+          <span className="d-inline p-2 mb-4 text-white border-start border-warning">
             <h1>Popular</h1>
           </span>
           {/* Container3 */}
