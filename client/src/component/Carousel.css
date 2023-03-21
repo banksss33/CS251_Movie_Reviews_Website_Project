@@ -1,0 +1,21 @@
+.carousel-caption {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 1rem;
+}
+
+.carousel-caption h3 {
+  margin-bottom: 0;
+}
+
+.carousel-item:hover .carousel-caption {
+  opacity: 1;
+}
