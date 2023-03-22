@@ -10,7 +10,8 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     // password: "123456789",
-    database: "moviecard"
+    // database: "moviecard"
+    database: "cornmetersystem"
 })
 
 app.get('/haha', (req, res) => {
@@ -31,6 +32,26 @@ app.get('/ctList', (req, res) => {
     db.query("SELECT * FROM movie", (err, result) => {
         if (err) {
             console.log(err + "select movie error");
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.get('/MovieCardDefault', (req, res) => {
+    db.query("SELECT ImageLink, Title FROM movie;", (err, result) => {
+        if (err) {
+            console.log(err + "select movie card error");
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.get('/MovieDetail', (req, res) => {
+    db.query("SELECT ImageLink, Title FROM movie;", (err, result) => {
+        if (err) {
+            console.log(err + "select movie card error");
         } else {
             res.send(result);
         }
