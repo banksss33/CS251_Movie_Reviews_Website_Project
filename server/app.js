@@ -11,7 +11,7 @@ const db = mysql.createConnection({
     host: "localhost",
     // password: "123456789",
     // database: "moviecard"
-    database: "cornmetersystem"
+    database: "moviecard"
 })
 
 app.get("/haha", (req, res) => {

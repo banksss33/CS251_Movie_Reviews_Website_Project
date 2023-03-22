@@ -8,6 +8,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import MovieCard from "./component/MovieCard";
 import ShowAccount from "./component/ShowAccount";
 import ShowCarousel from "./component/ShowCarousel";
+import { Container } from "react-bootstrap";
 
 const root = document.getElementById("root");
 

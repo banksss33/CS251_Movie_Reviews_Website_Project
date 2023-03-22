@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import { Row } from "react-bootstrap";
 import "../component/Carousel.css";
-import CarouselData from "../component/ShowCarousel";
+import ShowCarousel from "../component/ShowCarousel";
 
 function Hub() {
   return (
@@ -28,7 +28,7 @@ function Hub() {
             <h1>New</h1>
           </span>{" "}
           {/* Container3 */}
-          <CarouselData />
+          <ShowCarousel showFrom="ctList" />
         </Row>{" "}
         {/*Popular*/}
         <Row className="mt-5">
@@ -37,7 +37,7 @@ function Hub() {
             <h1>Popular</h1>
           </span>
           {/* Container3 */}
-          <CarouselData />
+          <ShowCarousel showFrom="ctList" />
         </Row>
       </Container>
     </div>
