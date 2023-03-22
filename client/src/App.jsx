@@ -13,7 +13,7 @@ import SignIn from "./Page/SignIn";
 import Moviepage from "./Page/Moviepage";
 
 // test database
-import ShowAccount from "./component/account";
+import ShowAccount from "./component/ShowAccount";
 import CarouselData from "./component/ShowCarousel";
 
 function App() {

@@ -7,16 +7,13 @@ function ShowCarousel() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3001/ctList`); //path from database
+    const movieData = () => {
+      axios.get("http://localhost:3001/ctList").then((response) => {
         setItems(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      });
     };
 
-    fetchData();
+    movieData();
   }, []);
 
   return (
