@@ -7,11 +7,12 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  // password: "123456789",
-  database: "moviecard",
-});
+    user: "root",
+    host: "localhost",
+    // password: "123456789",
+    // database: "moviecard"
+    database: "cornmetersystem"
+})
 
 app.get("/haha", (req, res) => {
   res.send("haha");
@@ -36,6 +37,26 @@ app.get("/ctList", (req, res) => {
     }
   });
 });
+
+app.get('/MovieCardDefault', (req, res) => {
+    db.query("SELECT ImageLink, Title FROM movie;", (err, result) => {
+        if (err) {
+            console.log(err + "select movie card error");
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.get('/MovieDetail', (req, res) => {
+    db.query("SELECT ImageLink, Title FROM movie;", (err, result) => {
+        if (err) {
+            console.log(err + "select movie card error");
+        } else {
+            res.send(result);
+        }
+    })
+})
 
 app.listen(3001, () => {
   console.log("server running on port 3001");
