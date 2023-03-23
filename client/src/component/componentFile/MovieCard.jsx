@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
-import styles from "./MovieCard.css";
+import styles from "../style/MovieCard.css";
+import { Row, Col } from "react-bootstrap";
 
-const MovieCard = ({ showFrom }) => {
+const MovieCard = ({ col, row, showFrom }) => {
   const [Items, setItems] = useState([]);
 
   useEffect(() => {
@@ -15,24 +16,33 @@ const MovieCard = ({ showFrom }) => {
     };
 
     cardData();
-  }, []);
+  }, [showFrom]);
 
-  return (
-    <>
-      {Items.map((item) => (
-        <Card
-          className={`bg-dark text-white ${styles.card}`}
-          key={item.MovieID}
-        >
-          <Card.Img src={item.ImageLink} alt="No Image found" />
-          <Card.ImgOverlay className={styles.cardImgOverlay}>
-            <Card.Title>{item.Title}</Card.Title>
-            <Card.Text>{item.Description}</Card.Text>
-          </Card.ImgOverlay>
-        </Card>
-      ))}
-    </>
-  );
+  const renderMovies = () => {
+    let movieRows = [];
+    for (let i = 0; i < Items.length; i += col) {
+      let movieRow = [];
+      for (let j = i; j < i + col; j++) {
+        if (Items[j]) {
+          movieRow.push(
+            <Col md={12 / col} key={Items[j].MovieID}>
+              <Card className={`bg-dark text-white ${styles.card}`}>
+                <Card.Img src={Items[j].ImageLink} alt="No Image found" />
+                <Card.ImgOverlay className={styles.cardImgOverlay}>
+                  <Card.Title>{Items[j].Title}</Card.Title>
+                  <Card.Text>{Items[j].Description}</Card.Text>
+                </Card.ImgOverlay>
+              </Card>
+            </Col>
+          );
+        }
+      }
+      movieRows.push(<Row key={i}>{movieRow}</Row>);
+    }
+    return movieRows.slice(0, row);
+  };
+
+  return <>{renderMovies()}</>;
 };
 
 export default MovieCard;

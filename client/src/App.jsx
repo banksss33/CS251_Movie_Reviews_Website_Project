@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
-import Moviepage from "./Page/Moviepage";
+import Showall from "./Page/Showall";
 import SearchBar from "./component/componentFile/SearchBar";
 
 
@@ -89,7 +89,7 @@ function App() {
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/search" element={<SearchBar />} />
-        <Route path="/WatchList" element={<Moviepage />} />
+        <Route path="/WatchList" element={<Showall />} />
       </Routes>
       
     </BrowserRouter>
