@@ -1,8 +1,8 @@
 import Container from "react-bootstrap/Container";
 import Carousel from "react-bootstrap/Carousel";
 import { Row } from "react-bootstrap";
-import "../component/Carousel.css";
-import ShowCarousel from "../component/ShowCarousel";
+import "../component/style/Carousel.css";
+import ShowCarousel from "../component/componentFile/ShowCarousel";
 
 function Hub() {
   return (

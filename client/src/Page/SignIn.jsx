@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import "../component/SignIn.css"
+import "../component/style/SignIn.css"
 
 function SignIn({ name, ...props }) {
   const [show, setShow] = useState(false);

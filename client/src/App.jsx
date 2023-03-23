@@ -11,10 +11,12 @@ import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
 import Moviepage from "./Page/Moviepage";
+import SearchBar from "./component/componentFile/SearchBar";
+
 
 // test database
-import ShowAccount from "./component/ShowAccount";
-import CarouselData from "./component/ShowCarousel";
+import ShowAccount from "./component/componentFile/ShowAccount";
+import CarouselData from "./component/componentFile/ShowCarousel";
 
 function App() {
   const [selectedTitle, setSelectedTitle] = useState("All");
@@ -68,6 +70,11 @@ function App() {
           }}
           className="border-start border-secondary rounded-0"
         >
+          {/* Test searching */}
+          <LinkContainer to="/search">
+            <Nav.Link>Search</Nav.Link>
+          </LinkContainer>
+
           <LinkContainer to="/WatchList">
             <Nav.Link>Watch list</Nav.Link>
           </LinkContainer>
@@ -81,6 +88,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/search" element={<SearchBar />} />
         <Route path="/WatchList" element={<Moviepage />} />
       </Routes>
       

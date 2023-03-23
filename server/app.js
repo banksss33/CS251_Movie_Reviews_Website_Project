@@ -11,7 +11,7 @@ const db = mysql.createConnection({
     host: "localhost",
     // password: "123456789",
     // database: "moviecard"
-    database: "moviecard"
+    database: "cornmetersystem"
 })
 
 app.get("/haha", (req, res) => {
@@ -48,10 +48,10 @@ app.get('/MovieCardDefault', (req, res) => {
     })
 })
 
-app.get('/MovieDetail', (req, res) => {
-    db.query("SELECT ImageLink, Title FROM movie;", (err, result) => {
+app.get('/MovieListforSearch', (req, res) => {
+    db.query("SELECT Title FROM movie;", (err, result) => {
         if (err) {
-            console.log(err + "select movie card error");
+            console.log(err + "select movie list error");
         } else {
             res.send(result);
         }
