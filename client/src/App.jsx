@@ -60,7 +60,7 @@ function App() {
                 TV Series
               </Dropdown.Item>
             </DropdownButton>
-            <Form.Control aria-label="Search input" />
+            <SearchBar />
           </InputGroup>
         </Nav>
 
