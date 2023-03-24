@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,11 +12,25 @@ import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
 import Showall from "./Page/Showall";
-import SearchBar from "./component/componentFile/SearchBar";
 import Moviepage from "./Page/Moviepage";
+import "../src/component/style/SearchBar.css"
 
 function App() {
+  const [movieList, setmovieList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [selectedTitle, setSelectedTitle] = useState("All");
+
+  const onchange = event => {setSearchTerm(event.target.value)}
+
+  useEffect(() => {
+    const getmovie = () => {
+      axios.get("http://localhost:3001/MovieListforSearch").then((response) => {
+        setmovieList(response.data);
+      });
+    };
+
+    getmovie();
+  }, []);
 
   const handleSelect = (eventKey) => {
     setSelectedTitle(eventKey);
@@ -56,7 +71,27 @@ function App() {
                 TV Series
               </Dropdown.Item>
             </DropdownButton>
-            <SearchBar />
+            <Form.Control aria-label="Text input with dropdown button" type="text" value={searchTerm} placeholder="Search" onChange={onchange} />          
+            {/* Data results */}
+            <div className="dropdownSearch">
+              {/* filter for search */}
+                {movieList.filter((val) => {
+
+                  const search = searchTerm.toLowerCase();
+                  const name = val.Title.toLowerCase();
+
+                  return search && name.startsWith(search);
+                }).map((val, key) => {
+                  // to show all the movie title
+                    return (
+                          <div key={key}>
+                            <button className="dropdownbutton" onClick={() => setSearchTerm(val.Title)}>
+                              {val.Title}
+                            </button>
+                          </div>            
+                    )
+                })}
+            </div>
           </InputGroup>
         </Nav>
 

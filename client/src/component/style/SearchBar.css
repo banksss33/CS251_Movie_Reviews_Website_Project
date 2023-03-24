@@ -15,6 +15,14 @@
     border: none;
 }
 
+.dropdownbutton {
+    height: 40px;
+    width: 100%;
+    border: 0;
+    text-align: left;
+    padding-left: 60px;
+}
+
 .dropdownSearch-row {
     cursor: pointer;
     text-align: start;
