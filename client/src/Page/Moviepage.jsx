@@ -1,17 +1,40 @@
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
-import Carousel from "react-bootstrap/Carousel";
-import { Row } from "react-bootstrap";
+
 import "../component/style/Carousel.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Moviepage() {
+
+  const [movieList, setmovieList] = useState([]);
+
+  useEffect(() => {
+    const getmovie = () => {
+      axios.get("http://localhost:3001/Moviepage").then((response) => {
+        setmovieList(response.data);
+      });
+    };
+
+    getmovie();
+  }, []);
+
   return (
-    <div
-      style={{
-        backgroundColor: "rgb(0,22,22)",
-      }}
-    >
+    <div>
+      {/* filter for search */}
+      {movieList.map((val, key) => {
+        // to show all the movie title
+          return (
+            <div>
+              <h1>{val.Title}</h1>
+              <img
+                src={val.ImageLink}
+                alt="Data not found!"
+              />
+              <p>{val.Description}</p>
+              <p>{val.DirectorName}</p>
+            </div>
       
+  )
+})}
     </div>
   );
 }

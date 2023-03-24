@@ -10,22 +10,8 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   // password: "123456789",
-  database: "dbname",
-  //database: "cornmetersystem"
-});
-
-app.get("/haha", (req, res) => {
-  res.send("haha");
-});
-
-app.get("/showmmber", (req, res) => {
-  db.query("SELECT * FROM account", (err, result) => {
-    if (err) {
-      console.log(err + "select account error");
-    } else {
-      res.send(result);
-    }
-  });
+  // database: "dbname",
+  database: "cornmetersystem"
 });
 
 app.get("/ctList", (req, res) => {
@@ -57,6 +43,18 @@ app.get("/MovieListforSearch", (req, res) => {
     }
   });
 });
+
+app.get("/Moviepage", (req, res) => {
+  var temp = 'Interstellar';
+  db.query("SELECT Title, ImageLink, Description, DirectorName FROM movie JOIN directed JOIN director WHERE movie.MovieID=directed.MovieID AND director.DirectorID=directed.DirectorID AND Title = (SELECT Title FROM movie WHERE Title = ?)",[temp], (err, result) => {
+    if (err) {
+      console.log(err + "select movie list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 
 app.listen(3001, () => {
   console.log("server running on port 3001");

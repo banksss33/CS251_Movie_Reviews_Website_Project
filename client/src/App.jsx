@@ -12,11 +12,7 @@ import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
 import Showall from "./Page/Showall";
 import SearchBar from "./component/componentFile/SearchBar";
-
-
-// test database
-import ShowAccount from "./component/componentFile/ShowAccount";
-import CarouselData from "./component/componentFile/ShowCarousel";
+import Moviepage from "./Page/Moviepage";
 
 function App() {
   const [selectedTitle, setSelectedTitle] = useState("All");
@@ -71,8 +67,8 @@ function App() {
           className="border-start border-secondary rounded-0"
         >
           {/* Test searching */}
-          <LinkContainer to="/search">
-            <Nav.Link>Search</Nav.Link>
+          <LinkContainer to="/test">
+            <Nav.Link>test moviepage</Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/WatchList">
@@ -88,7 +84,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/search" element={<SearchBar />} />
+        <Route path="/test" element={<Moviepage />} />
         <Route path="/WatchList" element={<Showall />} />
       </Routes>
       

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../style/SearchBar.css"
+import Form from 'react-bootstrap/Form';
 
 function SearchBar() {
     
@@ -21,21 +22,13 @@ function SearchBar() {
     }, []);
 
     return (
-        <div className="search">
-            <div className="search-container">
-              <div className="search-inner">
-                <input type="text" value={searchTerm} placeholder="Search" onChange={onchange}/>
-              </div>
-            </div>
-            
-
+        <div> 
+            <Form.Control aria-label="Text input with dropdown button" type="text" value={searchTerm} placeholder="Search" onChange={onchange} />          
             {/* Data results */}
             <div className="dropdownSearch">
               {/* filter for search */}
                 {movieList.filter((val) => {
-                  // if (val.Title.toLowerCase().includes(searchTerm.toLowerCase())) {
-                  //   return val
-                  // }
+
                   const search = searchTerm.toLowerCase();
                   const name = val.Title.toLowerCase();
 
@@ -43,9 +36,11 @@ function SearchBar() {
                 }).map((val, key) => {
                   // to show all the movie title
                     return (
-                        <div className="dropdown-row" key={key}>
-                            <p className="dataItem">{val.Title}</p>
-                        </div>
+                          <div key={key}>
+                            <a onClick={() => setSearchTerm(val.Title)}>
+                              {val.Title}
+                            </a>
+                          </div>            
                     )
                 })}
             </div>
