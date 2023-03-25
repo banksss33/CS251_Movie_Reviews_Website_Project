@@ -102,7 +102,7 @@ function App() {
                           setSearchTerm(val.Title);
                           setID(val.MovieID);
                         }}
-                        to={"/Moviepage/".concat(mID)}
+                        to={"/Moviepage/".concat(val.MovieID)}
                       >
                         {val.Title}
                       </Link>
