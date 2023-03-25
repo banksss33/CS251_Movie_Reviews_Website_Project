@@ -1,15 +1,13 @@
-
 import "../component/style/Carousel.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function Moviepage() {
-
+function Moviepage({ ID }) {
   const [movieList, setmovieList] = useState([]);
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/Moviepage").then((response) => {
+      axios.get("http://localhost:3001/ctList").then((response) => {
         setmovieList(response.data);
       });
     };
@@ -22,19 +20,17 @@ function Moviepage() {
       {/* filter for search */}
       {movieList.map((val, key) => {
         // to show all the movie title
+        if (val.MovieID === ID) {
           return (
             <div>
               <h1>{val.Title}</h1>
-              <img
-                src={val.ImageLink}
-                alt="Data not found!"
-              />
+              <img src={val.ImageLink} alt="Data not found!" />
               <p>{val.Description}</p>
               <p>{val.DirectorName}</p>
             </div>
-      
-  )
-})}
+          );
+        }
+      })}
     </div>
   );
 }

@@ -13,18 +13,21 @@ import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
 import Showall from "./Page/Showall";
 import Moviepage from "./Page/Moviepage";
-import "../src/component/style/SearchBar.css"
+import "../src/component/style/SearchBar.css";
 
 function App() {
   const [movieList, setmovieList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedTitle, setSelectedTitle] = useState("All");
+  const [mID, setID] = useState(0);
 
-  const onchange = event => {setSearchTerm(event.target.value)}
+  const onchange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/MovieListforSearch").then((response) => {
+      axios.get("http://localhost:3001/ctList").then((response) => {
         setmovieList(response.data);
       });
     };
@@ -71,35 +74,44 @@ function App() {
                 TV Series
               </Dropdown.Item>
             </DropdownButton>
-            <Form.Control id="searchmovie" aria-label="Text input with dropdown button" type="text" value={searchTerm} placeholder="Search" onChange={onchange} />          
+            <Form.Control
+              id="searchmovie"
+              aria-label="Text input with dropdown button"
+              type="text"
+              value={searchTerm}
+              placeholder="Search"
+              onChange={onchange}
+            />
             {/* Data results */}
-            <div className="dropdownSearch">
+            <div className="dropdownSearch border border-warning">
               {/* filter for search */}
-                {movieList.filter((val) => {
-
+              {movieList
+                .filter((val) => {
                   const search = searchTerm.toLowerCase();
                   const name = val.Title.toLowerCase();
 
                   return search && name.startsWith(search);
-                }).map((val, key) => {
+                })
+                .map((val, key) => {
                   // to show all the movie title
-                    return (
-                          <div key={key}>
-                            <button className="dropdownbutton" onClick={() => setSearchTerm(val.Title)}>
-                              {val.Title}
-                            </button>
-                          </div>            
-                    )
+                  return (
+                    <div key={key}>
+                      <button
+                        className="dropdownbutton"
+                        onClick={() => {
+                          setSearchTerm(val.Title);
+                          setID(val.MovieID);
+                        }}
+                        to="/Moviepage"
+                      >
+                        {val.Title}
+                      </button>
+                    </div>
+                  );
                 })}
-                
             </div>
-            <LinkContainer to="/Moviepage/${searchTerm}">
-              <Nav.Link>Go to</Nav.Link>
-            </LinkContainer>
-            <Button variant="outline-warning" value={searchTerm}>Go</Button>
           </InputGroup>
         </Nav>
-        
 
         <Nav
           style={{
@@ -126,13 +138,10 @@ function App() {
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/test" element={<Moviepage />} />
-        <Route path="/Moviepage" element={<Moviepage />} />
+        <Route path="/Moviepage" element={<Moviepage ID={mID} />} />
         <Route path="/WatchList" element={<Showall />} />
       </Routes>
-      
     </BrowserRouter>
-
-    
   );
 }
 

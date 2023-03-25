@@ -1,9 +1,7 @@
-
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-;
 
 app.use(cors());
 app.use(express.json());
@@ -12,7 +10,7 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   // database: "dbname",
-  database: "cornmetersystem"
+  database: "moviecard",
 });
 
 app.get("/ctList", (req, res) => {
@@ -47,15 +45,18 @@ app.get("/MovieListforSearch", (req, res) => {
 
 app.get("/Moviepage", (req, res) => {
   var temp = "Interstellar";
-  db.query("SELECT Title, ImageLink, Description, DirectorName FROM movie JOIN directed JOIN director WHERE movie.MovieID=directed.MovieID AND director.DirectorID=directed.DirectorID AND Title = (SELECT Title FROM movie WHERE Title = ?)",[temp], (err, result) => {
-    if (err) {
-      console.log(err + "select movie list error");
-    } else {
-      res.send(result);
+  db.query(
+    "SELECT Title, ImageLink, Description, DirectorName FROM movie JOIN directed JOIN director WHERE movie.MovieID=directed.MovieID AND director.DirectorID=directed.DirectorID AND Title = (SELECT Title FROM movie WHERE Title = ?)",
+    [temp],
+    (err, result) => {
+      if (err) {
+        console.log(err + "select movie list error");
+      } else {
+        res.send(result);
+      }
     }
-  });
+  );
 });
-
 
 app.listen(3001, () => {
   console.log("server running on port 3001");
