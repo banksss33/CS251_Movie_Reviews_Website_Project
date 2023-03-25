@@ -7,7 +7,7 @@ function Moviepage({ ID }) {
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/ctList").then((response) => {
+      axios.get("http://localhost:3001/Moviepage").then((response) => {
         setmovieList(response.data);
       });
     };

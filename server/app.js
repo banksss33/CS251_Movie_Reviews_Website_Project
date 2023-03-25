@@ -10,7 +10,7 @@ const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   // database: "dbname",
-  database: "moviecard",
+  database: "cornmetersystem",
 });
 
 app.get("/ctList", (req, res) => {
@@ -44,10 +44,8 @@ app.get("/MovieListforSearch", (req, res) => {
 });
 
 app.get("/Moviepage", (req, res) => {
-  var temp = "Interstellar";
   db.query(
-    "SELECT Title, ImageLink, Description, DirectorName FROM movie JOIN directed JOIN director WHERE movie.MovieID=directed.MovieID AND director.DirectorID=directed.DirectorID AND Title = (SELECT Title FROM movie WHERE Title = ?)",
-    [temp],
+    "SELECT * FROM movie JOIN directed JOIN director WHERE movie.MovieID=directed.MovieID AND director.DirectorID=directed.DirectorID;",
     (err, result) => {
       if (err) {
         console.log(err + "select movie list error");

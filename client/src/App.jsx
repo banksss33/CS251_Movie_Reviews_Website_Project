@@ -119,10 +119,6 @@ function App() {
           }}
           className="border-start border-secondary rounded-0"
         >
-          {/* Test searching */}
-          <LinkContainer to="/test">
-            <Nav.Link>test moviepage</Nav.Link>
-          </LinkContainer>
 
           <LinkContainer to="/WatchList">
             <Nav.Link>Watch list</Nav.Link>
@@ -137,7 +133,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/test" element={<Moviepage />} />
         <Route
           path={"/Moviepage/".concat(mID)}
           element={<Moviepage ID={mID} />}
