@@ -71,7 +71,7 @@ function App() {
                 TV Series
               </Dropdown.Item>
             </DropdownButton>
-            <Form.Control aria-label="Text input with dropdown button" type="text" value={searchTerm} placeholder="Search" onChange={onchange} />          
+            <Form.Control id="searchmovie" aria-label="Text input with dropdown button" type="text" value={searchTerm} placeholder="Search" onChange={onchange} />          
             {/* Data results */}
             <div className="dropdownSearch">
               {/* filter for search */}
@@ -91,9 +91,15 @@ function App() {
                           </div>            
                     )
                 })}
+                
             </div>
+            <LinkContainer to="/Moviepage/${searchTerm}">
+              <Nav.Link>Go to</Nav.Link>
+            </LinkContainer>
+            <Button variant="outline-warning" value={searchTerm}>Go</Button>
           </InputGroup>
         </Nav>
+        
 
         <Nav
           style={{
@@ -120,6 +126,7 @@ function App() {
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/test" element={<Moviepage />} />
+        <Route path="/Moviepage" element={<Moviepage />} />
         <Route path="/WatchList" element={<Showall />} />
       </Routes>
       
