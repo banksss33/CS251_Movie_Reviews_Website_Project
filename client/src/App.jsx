@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import InputGroup from "react-bootstrap/InputGroup";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import Hub from "./Page/Homepage";
 import SignIn from "./Page/SignIn";
@@ -96,16 +96,16 @@ function App() {
                   // to show all the movie title
                   return (
                     <div key={key}>
-                      <button
+                      <Link
                         className="dropdownbutton"
                         onClick={() => {
                           setSearchTerm(val.Title);
                           setID(val.MovieID);
                         }}
-                        to="/Moviepage"
+                        to={"/Moviepage/".concat(mID)}
                       >
                         {val.Title}
-                      </button>
+                      </Link>
                     </div>
                   );
                 })}
@@ -138,7 +138,10 @@ function App() {
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/test" element={<Moviepage />} />
-        <Route path="/Moviepage" element={<Moviepage ID={mID} />} />
+        <Route
+          path={"/Moviepage/".concat(mID)}
+          element={<Moviepage ID={mID} />}
+        />
         <Route path="/WatchList" element={<Showall />} />
       </Routes>
     </BrowserRouter>
