@@ -45,7 +45,33 @@ app.get("/MovieListforSearch", (req, res) => {
 
 app.get("/Moviepage", (req, res) => {
   db.query(
+    "SELECT * FROM movie;",
+    (err, result) => {
+      if (err) {
+        console.log(err + "select movie list error");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/getDirector", (req, res) => {
+  db.query(
     "SELECT * FROM movie JOIN directed JOIN director WHERE movie.MovieID=directed.MovieID AND director.DirectorID=directed.DirectorID;",
+    (err, result) => {
+      if (err) {
+        console.log(err + "select movie list error");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/getActor", (req, res) => {
+  db.query(
+    "SELECT * FROM movie JOIN cast JOIN actor WHERE movie.MovieID=cast.MovieID AND actor.ActorID=cast.ActorID;",
     (err, result) => {
       if (err) {
         console.log(err + "select movie list error");
