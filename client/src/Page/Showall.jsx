@@ -25,7 +25,7 @@ function Showall() {
         </Row>
 
         <Row className="mt-5">
-          <MovieCard row={2} col={4} showFrom="ctList" />
+          <MovieCard col={4} showFrom="ctList" />
         </Row>
       </Container>
     </div>
