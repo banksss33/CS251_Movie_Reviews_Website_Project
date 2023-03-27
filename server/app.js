@@ -9,8 +9,8 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-   database: "moviecard",
-  // database: "cornmetersystem",
+  //  database: "moviecard",
+  database: "cornmetersystem",
 });
 
 app.get("/ctList", (req, res) => {
