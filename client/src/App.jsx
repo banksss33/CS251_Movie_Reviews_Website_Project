@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
@@ -14,12 +13,12 @@ import SignIn from "./Page/SignIn";
 import Showall from "./Page/Showall";
 import Moviepage from "./Page/Moviepage";
 import "../src/component/style/SearchBar.css";
+import { Col, Container, Row } from "react-bootstrap";
 
 function App() {
   const [movieList, setmovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTitle, setSelectedTitle] = useState("All");
-  const [mID, setID] = useState(0);
 
   const onchange = (event) => {
     setSearchTerm(event.target.value);
@@ -55,25 +54,8 @@ function App() {
 
         <Nav className="flex-grow-1">
           <InputGroup>
-            <DropdownButton
-              variant="outline-warning"
-              title={selectedTitle}
-              id="input-group-dropdown-1"
-              onSelect={handleSelect}
-            >
-              <Dropdown.Item eventKey="All" href="#">
-                All
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="Actor" href="#">
-                Actor
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="Movie" href="#">
-                Movie
-              </Dropdown.Item>
-              <Dropdown.Item eventKey="TV Series" href="#">
-                TV Series
-              </Dropdown.Item>
-            </DropdownButton>
+            <InputGroup.Text>Icon</InputGroup.Text>
+
             <Form.Control
               id="searchmovie"
               aria-label="Text input with dropdown button"
@@ -81,9 +63,10 @@ function App() {
               value={searchTerm}
               placeholder="Search"
               onChange={onchange}
+              className="border border-warning"
             />
             {/* Data results */}
-            <div className="dropdownSearch border border-warning">
+            <Container className="dropdownSearch">
               {/* filter for search */}
               {movieList
                 .filter((val) => {
@@ -95,21 +78,22 @@ function App() {
                 .map((val, key) => {
                   // to show all the movie title
                   return (
-                    <div key={key}>
-                      <Link
-                        className="dropdownbutton"
-                        onClick={() => {
-                          setSearchTerm(val.Title);
-                          setID(val.MovieID);
-                        }}
-                        to={"/Moviepage/".concat(val.MovieID)}
-                      >
-                        {val.Title}
-                      </Link>
-                    </div>
+                    <Row key={key}>
+                      <Col>
+                        <Link
+                          className=""
+                          onClick={() => {
+                            setSearchTerm(val.Title);
+                          }}
+                          to={"/Moviepage?ID=".concat(val.MovieID)}
+                        >
+                          {val.Title}
+                        </Link>
+                      </Col>
+                    </Row>
                   );
                 })}
-            </div>
+            </Container>
           </InputGroup>
         </Nav>
 
@@ -119,7 +103,6 @@ function App() {
           }}
           className="border-start border-secondary rounded-0"
         >
-
           <LinkContainer to="/WatchList">
             <Nav.Link>Watch list</Nav.Link>
           </LinkContainer>
@@ -133,10 +116,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route
-          path={"/Moviepage/".concat(mID)}
-          element={<Moviepage ID={mID} />}
-        />
+        <Route path={"/Moviepage"} element={<Moviepage />} />
         <Route path="/WatchList" element={<Showall />} />
       </Routes>
     </BrowserRouter>

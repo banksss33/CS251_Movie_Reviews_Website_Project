@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import styles from "../style/MovieCard.css";
+import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 
 const MovieCard = ({ col, row, showFrom }) => {
@@ -28,10 +29,12 @@ const MovieCard = ({ col, row, showFrom }) => {
             <Col md={12 / col} key={Items[j].MovieID}>
               <Card className={`bg-dark text-white ${styles.card}`}>
                 <Card.Img src={Items[j].ImageLink} alt="No Image found" />
-                <Card.ImgOverlay className={styles.cardImgOverlay}>
-                  <Card.Title>{Items[j].Title}</Card.Title>
-                  <Card.Text>{Items[j].Description}</Card.Text>
-                </Card.ImgOverlay>
+                <Link to={"/Moviepage?ID=".concat(Items[j].MovieID)}>
+                  <Card.ImgOverlay className={styles.cardImgOverlay}>
+                    <Card.Title>{Items[j].Title}</Card.Title>
+                    <Card.Text>{Items[j].Description}</Card.Text>
+                  </Card.ImgOverlay>
+                </Link>
               </Card>
             </Col>
           );

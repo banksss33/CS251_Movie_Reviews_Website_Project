@@ -1,15 +1,16 @@
 import "../component/style/Carousel.css";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-function Moviepage({ ID }) {
+function Moviepage() {
   const [movieList, setmovieList] = useState([]);
   const [directorList, setdirectorList] = useState([]);
   const [actorList, setactorList] = useState([]);
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/Moviepage").then((response) => {
+      axios.get("http://localhost:3001/ctList").then((response) => {
         setmovieList(response.data);
       });
     };
@@ -31,10 +32,17 @@ function Moviepage({ ID }) {
     getactor();
   }, []);
 
+  function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+
+  let ID = parseInt(useQuery().get("ID"));
   return (
-    <div>
+    <>
       {/* filter for search */}
-      {movieList.map((val, key) => {
+      {movieList.map((val) => {
         // to show all the movie title
         if (val.MovieID === ID) {
           return (
@@ -69,7 +77,7 @@ function Moviepage({ ID }) {
           );
         }
       })}
-    </div>
+    </>
   );
 }
 

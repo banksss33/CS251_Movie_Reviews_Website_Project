@@ -1,5 +1,6 @@
 // ShowCarousel.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
 
@@ -19,15 +20,20 @@ function ShowCarousel({ showFrom }) {
   return (
     <Carousel fade>
       {items.map((item) => (
+        
         <Carousel.Item key={item.MovieID}>
+          <Link to={"/Moviepage?ID=".concat(item.MovieID)}>
           <img
             className="d-block w-100 rounded-5"
             src={item.ImageLink}
             alt="Data not found!"
           />
+          </Link>
           <Carousel.Caption>
-            <h3>{item.Title}</h3>
-            <p>{item.Description}</p>
+            
+              <h3>{item.Title}</h3>
+              <p>{item.Description}</p>
+            
           </Carousel.Caption>
         </Carousel.Item>
       ))}
