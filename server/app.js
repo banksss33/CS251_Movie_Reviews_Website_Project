@@ -82,6 +82,19 @@ app.get("/getActor", (req, res) => {
   );
 });
 
+app.get("/getReview", (req, res) => {
+  db.query(
+    "SELECT * FROM review JOIN movie JOIN account JOIN profile WHERE movie.MovieID=review.MovieID AND account.UserID=review.UserID AND account.UserID=profile.UserID;",
+    (err, result) => {
+      if (err) {
+        console.log(err + "select movie list error");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
 app.listen(3001, () => {
   console.log("server running on port 3001");
 });

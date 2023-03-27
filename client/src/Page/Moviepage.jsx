@@ -10,6 +10,7 @@ function Moviepage() {
   const [movieList, setmovieList] = useState([]);
   const [directorList, setdirectorList] = useState([]);
   const [actorList, setactorList] = useState([]);
+  const [reviewList, setreviewList] = useState([]);
 
   useEffect(() => {
     const getmovie = () => {
@@ -30,9 +31,16 @@ function Moviepage() {
       });
     };
 
+    const getreview = () => {
+      axios.get("http://localhost:3001/getReview").then((response) => {
+        setreviewList(response.data);
+      });
+    };
+
     getmovie();
     getdirector();
     getactor();
+    getreview();
   }, []);
 
   let Param = useParams();
@@ -126,6 +134,53 @@ function Moviepage() {
                     </Row>
                   </Col>
                 </Row>
+                <hr />
+                <Row>
+                  <span className="d-inline p-2 mb-4 text-white border-start border-warning border-4">
+                    <h2>
+                      <strong>Review</strong>
+                    </h2>
+                  </span>
+                </Row>
+                <br/><br/><br/><br/>
+                <div>
+                  {reviewList.map((val, key) => {
+                    // to show all the movie title
+                    if (val.MovieID === ID) {
+                      return (
+                        <div className="p-3 rounded-4" style={{
+                          background: "#679267",
+                        }}>
+                          <Row>
+                            <div className="col-sm-8 ps-5">
+                              <p>{val.Nickname}</p>
+                              <p>{val.Date}</p>
+                            </div>
+
+                            <div className="col-sm-4" style={{
+                              display: "flex",
+                              justifyContent: "right"
+                            }}>
+
+                              <p className="p-3">{val.Score}</p>
+                              <img className="p-3" src="#" alt="popcorn"/>
+                            </div>
+                          </Row>
+                          <hr/>
+                          <Row>
+                            <div style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              minHeight: "100px"
+                            }}>
+                              <p>{val.review}</p>
+                            </div>
+                          </Row>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
               </Container>
             );
           }
