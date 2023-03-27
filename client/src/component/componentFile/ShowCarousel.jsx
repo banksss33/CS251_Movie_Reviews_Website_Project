@@ -22,7 +22,7 @@ function ShowCarousel({ showFrom }) {
       {items.map((item) => (
         
         <Carousel.Item key={item.MovieID}>
-          <Link to={"/Moviepage?ID=".concat(item.MovieID)}>
+          <Link to={"/Moviepage/".concat(item.MovieID)}>
           <img
             className="d-block w-100 rounded-5"
             src={item.ImageLink}

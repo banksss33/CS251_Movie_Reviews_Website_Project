@@ -85,7 +85,7 @@ function App() {
                           onClick={() => {
                             setSearchTerm(val.Title);
                           }}
-                          to={"/Moviepage?ID=".concat(val.MovieID)}
+                          to={"/Moviepage/".concat(val.MovieID)}
                         >
                           {val.Title}
                         </Link>
@@ -116,7 +116,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path={"/Moviepage"} element={<Moviepage />} />
+        <Route path="/Moviepage/:ID" element={<Moviepage />} />
         <Route path="/WatchList" element={<Showall />} />
       </Routes>
     </BrowserRouter>

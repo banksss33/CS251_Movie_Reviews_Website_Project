@@ -29,7 +29,7 @@ const MovieCard = ({ col, row, showFrom }) => {
             <Col md={12 / col} key={Items[j].MovieID}>
               <Card className={`bg-dark text-white ${styles.card}`}>
                 <Card.Img src={Items[j].ImageLink} alt="No Image found" />
-                <Link to={"/Moviepage?ID=".concat(Items[j].MovieID)}>
+                <Link to={"/Moviepage/".concat(Items[j].MovieID)}>
                   <Card.ImgOverlay className={styles.cardImgOverlay}>
                     <Card.Title className="text-light bg-secondary opacity-75 rounded-3">{Items[j].Title}</Card.Title>
                   </Card.ImgOverlay>
