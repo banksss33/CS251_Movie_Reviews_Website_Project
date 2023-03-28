@@ -143,7 +143,7 @@ function Moviepage() {
                   </span>
                 </Row>
 
-                <Row className="border">
+                <Row className="mt-5">
                   {reviewList.map((val, key) => {
                     // to show all the movie title
                     if (val.MovieID === ID) {
