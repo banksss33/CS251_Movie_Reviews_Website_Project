@@ -3,8 +3,6 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
@@ -14,6 +12,7 @@ import Showall from "./Page/Showall";
 import Moviepage from "./Page/Moviepage";
 import "../src/component/style/SearchBar.css";
 import { Col, Container, Row } from "react-bootstrap";
+import NotFound from "./Page/NotFound";
 
 function App() {
   const [movieList, setmovieList] = useState([]);
@@ -118,6 +117,7 @@ function App() {
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/Moviepage/:ID" element={<Moviepage />} />
         <Route path="/WatchList" element={<Showall />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

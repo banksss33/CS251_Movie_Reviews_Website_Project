@@ -6,7 +6,7 @@ import ShowCarousel from "../component/componentFile/ShowCarousel";
 
 function Hub() {
   return (
-    <div
+    <body
       style={{
         backgroundColor: "rgb(0,22,22)",
         padding: "100px 125px",
@@ -40,7 +40,7 @@ function Hub() {
           <ShowCarousel showFrom="ctList" />
         </Row>
       </Container>
-    </div>
+    </body>
   );
 }
 

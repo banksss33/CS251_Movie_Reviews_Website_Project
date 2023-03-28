@@ -46,7 +46,7 @@ function Moviepage() {
   let Param = useParams();
   let ID = parseInt(Param.ID);
   return (
-    <div
+    <body
       style={{
         backgroundColor: "#51484f",
         padding: "100px 125px",
@@ -142,37 +142,44 @@ function Moviepage() {
                     </h2>
                   </span>
                 </Row>
-                <br/><br/><br/><br/>
-                <div>
+
+                <Row className="border">
                   {reviewList.map((val, key) => {
                     // to show all the movie title
                     if (val.MovieID === ID) {
                       return (
-                        <div className="p-3 rounded-4" style={{
-                          background: "#679267",
-                        }}>
+                        <div
+                          className="p-3 rounded-4"
+                          style={{
+                            background: "#679267",
+                          }}
+                        >
                           <Row>
                             <div className="col-sm-8 ps-5">
                               <p>{val.Nickname}</p>
                               <p>{val.Date}</p>
                             </div>
 
-                            <div className="col-sm-4" style={{
-                              display: "flex",
-                              justifyContent: "right"
-                            }}>
-
+                            <div
+                              className="col-sm-4"
+                              style={{
+                                display: "flex",
+                                justifyContent: "right",
+                              }}
+                            >
                               <p className="p-3">{val.Score}</p>
-                              <img className="p-3" src="#" alt="popcorn"/>
+                              <img className="p-3" src="#" alt="popcorn" />
                             </div>
                           </Row>
-                          <hr/>
+                          <hr />
                           <Row>
-                            <div style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              minHeight: "100px"
-                            }}>
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                minHeight: "100px",
+                              }}
+                            >
                               <p>{val.review}</p>
                             </div>
                           </Row>
@@ -180,13 +187,13 @@ function Moviepage() {
                       );
                     }
                   })}
-                </div>
+                </Row>
               </Container>
             );
           }
         })}
       </Container>
-    </div>
+    </body>
   );
 }
 
