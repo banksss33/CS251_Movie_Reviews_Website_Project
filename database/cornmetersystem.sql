@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2023 at 12:33 PM
+-- Generation Time: Mar 28, 2023 at 03:39 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -51,7 +51,7 @@ INSERT INTO `account` (`UserID`, `username`, `password`) VALUES
 CREATE TABLE `actor` (
   `ActorID` int(100) NOT NULL,
   `ActorName` varchar(255) NOT NULL,
-  `ActorImageLink` varchar(255) NOT NULL
+  `ActorImageLink` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -129,7 +129,10 @@ INSERT INTO `actor` (`ActorID`, `ActorName`, `ActorImageLink`) VALUES
 (68, 'Jessica Chastain', 'https://th.bing.com/th/id/R.b0b5d6d54e0dc01357dfd91a4320fdb3?rik=Qa0BNF1KuSjOhg&pid=ImgRaw&r=0'),
 (69, 'Jennifer Lawrence', 'https://th.bing.com/th/id/OIP.fHmPD9HwDI6w4_jBTfcrzgHaI3?pid=ImgDet&rs=1'),
 (70, 'Josh Hutcherson', 'https://th.bing.com/th/id/OIP.ZakyFMIhn88-FUplhxvvDQHaI-?pid=ImgDet&rs=1'),
-(71, 'Liam Hemsworth', 'https://th.bing.com/th/id/R.f2cbfd698a387b9132c2fa6f2e4412c7?rik=r7RnzguxGm00RQ&pid=ImgRaw&r=0');
+(71, 'Liam Hemsworth', 'https://th.bing.com/th/id/R.f2cbfd698a387b9132c2fa6f2e4412c7?rik=r7RnzguxGm00RQ&pid=ImgRaw&r=0'),
+(72, 'Dylan O\'Brien', 'https://th.bing.com/th/id/R.e90623465095f11e748f41f1e5c0f6be?rik=FzCzigTxajkEQQ&pid=ImgRaw&r=0'),
+(73, 'Kaya Scodelario', 'https://th.bing.com/th/id/R.7a44ef4c8d6c77347a47d2c6a05a292e?rik=ZA2Ch7Xznfze7g&pid=ImgRaw&r=0'),
+(74, 'Will Poulter', 'https://th.bing.com/th/id/R.a08091e88c0034b0d3ab1960a8a2773e?rik=X30TvyFagRMLjg&pid=ImgRaw&r=0');
 
 -- --------------------------------------------------------
 
@@ -239,7 +242,10 @@ INSERT INTO `cast` (`MovieID`, `ActorID`) VALUES
 (26, 62),
 (27, 63),
 (27, 64),
-(27, 65);
+(27, 65),
+(28, 72),
+(28, 73),
+(28, 74);
 
 -- --------------------------------------------------------
 
@@ -346,11 +352,11 @@ INSERT INTO `director` (`DirectorID`, `DirectorName`) VALUES
 CREATE TABLE `movie` (
   `MovieID` int(100) NOT NULL,
   `Year` int(100) NOT NULL,
-  `Title` varchar(255) NOT NULL,
-  `Description` varchar(255) NOT NULL,
-  `ImageLink` varchar(255) NOT NULL,
-  `VideoLink` varchar(255) NOT NULL,
-  `Rate` varchar(100) NOT NULL
+  `Title` text NOT NULL,
+  `Description` text NOT NULL,
+  `ImageLink` text NOT NULL,
+  `VideoLink` text NOT NULL,
+  `Rate` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -359,7 +365,7 @@ CREATE TABLE `movie` (
 
 INSERT INTO `movie` (`MovieID`, `Year`, `Title`, `Description`, `ImageLink`, `VideoLink`, `Rate`) VALUES
 (1, 2014, 'Interstellar', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.', 'https://files.gqthailand.com/uploads/interstellar2.jpg', 'https://www.youtube.com/watch?v=z-LXHh6cj2Q', 'PG13'),
-(2, 2022, 'Doctor Strange in the Multiverse of Madness', 'Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help f', 'https://sportshub.cbsistatic.com/i/2022/02/13/1b917e47-3a41-415a-b3f5-4f855dc0caad/doctor-strange-in-the-multiverse-of-madness-trailer-poster.jpg?auto=webp&width=810&height=1200&crop=0.675:1,smart', 'https://www.youtube.com/watch?v=cw1A7B7t7aA', 'PG-13'),
+(2, 2022, 'Doctor Strange in the Multiverse of Madness', 'Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.', 'https://sportshub.cbsistatic.com/i/2022/02/13/1b917e47-3a41-415a-b3f5-4f855dc0caad/doctor-strange-in-the-multiverse-of-madness-trailer-poster.jpg?auto=webp&width=810&height=1200&crop=0.675:1,smart', 'https://www.youtube.com/watch?v=cw1A7B7t7aA', 'PG-13'),
 (3, 2012, 'The Hunger Games', 'Katniss Everdeen voluntarily takes her younger sister\'s place in the Hunger Games: a televised competition in which two teenagers from each of the twelve Districts of Panem are chosen at random to fight to the death.', 'https://th.bing.com/th/id/R.b2d400c3416c67e91c5da2cc9518084b?rik=KR8qxejDuh9VwQ&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fthe-hunger-games-mockingjay-part-1-final-poster.jpg&ehk=zmdOGXD58qe3jXoTbm3hQUwdAt4ll4HkjKV3dXlU4gs%3d&risl=&pid=Img', 'https://www.youtube.com/watch?v=mfmrPu43DF8', 'PG13'),
 (4, 1994, 'The Shawshank Redemption', 'Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.', 'https://www.cultura.id/wp-content/uploads/2019/09/the-shawshank-redemption_review.jpg', '', 'R'),
 (5, 1972, 'The Godfather', 'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.', 'https://th.bing.com/th/id/OIP.EZncYnNoDxdf2bBsnDbQigAAAA?pid=ImgDet&rs=1', '', 'R'),
@@ -384,7 +390,8 @@ INSERT INTO `movie` (`MovieID`, `Year`, `Title`, `Description`, `ImageLink`, `Vi
 (24, 1946, 'It\'s a Wonderful Life', 'An angel is sent from Heaven to help a desperately frustrated businessman by showing him what life would have been like if he had never existed.', 'https://th.bing.com/th/id/OIP.VneIABDkU0rkkW0u85Bc7wHaJ4?pid=ImgDet&rs=1', '', 'PG'),
 (25, 1991, 'The Silence of the Lambs', 'A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.\r\n', 'https://th.bing.com/th/id/R.c9c19d3f0fa5fe7f20a3da0009db6fb3?rik=6Ol5drorWjYtvw&pid=ImgRaw&r=0', '', 'R'),
 (26, 1998, 'Saving Private Ryan', 'Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.\r\n', 'https://th.bing.com/th/id/R.d5a046ac7fe62908f2db9d9424ab81d5?rik=0YktzrLNvlsdow&pid=ImgRaw&r=0', '', 'R'),
-(27, 2002, 'City of God', 'In the slums of Rio, two kids\' paths diverge as one struggles to become a photographer and the other a kingpin.\r\n', 'https://th.bing.com/th/id/R.5e6b40f50763e4febcea0c6346b2be50?rik=IDWXLnzl%2fQq6UQ&pid=ImgRaw&r=0', '', 'R');
+(27, 2002, 'City of God', 'In the slums of Rio, two kids\' paths diverge as one struggles to become a photographer and the other a kingpin.\r\n', 'https://th.bing.com/th/id/R.5e6b40f50763e4febcea0c6346b2be50?rik=IDWXLnzl%2fQq6UQ&pid=ImgRaw&r=0', '', 'R'),
+(28, 2014, 'The Maze Runner', 'Thomas is deposited in a community of boys after his memory is erased, soon learning they\'re all trapped in a maze that will require him to join forces with fellow \"runners\" for a shot at escape.', 'https://th.bing.com/th/id/OIP.FO88GonevOnGKbBKteXb7wHaLH?pid=ImgDet&rs=1', '', 'G');
 
 -- --------------------------------------------------------
 
@@ -418,7 +425,7 @@ CREATE TABLE `review` (
   `MovieID` int(100) NOT NULL,
   `UserID` int(10) NOT NULL,
   `Score` int(5) NOT NULL,
-  `review` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `review` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -528,7 +535,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `ActorID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `ActorID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `director`
@@ -540,7 +547,7 @@ ALTER TABLE `director`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `MovieID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `MovieID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `studio`

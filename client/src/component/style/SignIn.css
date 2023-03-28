@@ -148,7 +148,7 @@ body {
 .box form .inputBox input:focus ~ span {
     color: #fff;
     font-size: 1em;
-    transform: translateY(-34px);
+    transform: translateY(-50px);
 }
 
 .box form .inputBox i {
