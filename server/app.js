@@ -9,12 +9,11 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  //database: "moviecard",
   database: "cornmetersystem",
 });
 
 app.get("/ctList", (req, res) => {
-  db.query("SELECT * FROM movie", (err, result) => {
+  db.query("SELECT * FROM movie LIMIT 5", (err, result) => {
     if (err) {
       console.log(err + "select movie error");
     } else {
@@ -88,6 +87,32 @@ app.get("/getReview", (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err + "select movie list error");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/NewMovie", (req, res) => {
+  db.query(
+    "SELECT * FROM movie ORDER BY Year DESC LIMIT 5;",
+    (err, result) => {
+      if (err) {
+        console.log(err + "select new movie error");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.get("/RandMovie", (req, res) => {
+  db.query(
+    "SELECT * FROM movie ORDER BY RAND() LIMIT 5;",
+    (err, result) => {
+      if (err) {
+        console.log(err + "random movie error");
       } else {
         res.send(result);
       }

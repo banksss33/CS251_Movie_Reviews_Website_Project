@@ -28,7 +28,7 @@ function Hub() {
             <h1>New</h1>
           </span>{" "}
           {/* Container3 */}
-          <ShowCarousel showFrom="ctList" />
+          <ShowCarousel showFrom="NewMovie" />
         </Row>{" "}
         {/*Popular*/}
         <Row className="mt-5">
@@ -38,6 +38,15 @@ function Hub() {
           </span>
           {/* Container3 */}
           <ShowCarousel showFrom="ctList" />
+        </Row>
+        {/*Popular*/}
+        <Row className="mt-5">
+          {/* Container2 */}
+          <span className="d-inline p-2 mb-4 text-white border-start border-warning">
+            <h1>Random</h1>
+          </span>
+          {/* Container3 */}
+          <ShowCarousel showFrom="RandMovie" />
         </Row>
       </Container>
     </body>
