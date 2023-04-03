@@ -1,11 +1,5 @@
-.bg-dark.text-white {
-  background-color: #343a40;
-  color: #fff;
-}
-
 .card {
   border: none;
-  margin-bottom: 30px;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -13,31 +7,4 @@
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card-img-top {
-  height: 100%;
-  object-fit: fill;
-}
-
-.card-img-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.card-img-overlay .card-title {
-  font-weight: 600;
-  font-size: 1.2rem;
-  margin-bottom: 0;
-}
-
-.card-no-padding {
-  padding: 0;
 }

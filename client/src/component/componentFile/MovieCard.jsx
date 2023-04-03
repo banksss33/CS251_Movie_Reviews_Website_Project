@@ -23,8 +23,8 @@ const MovieCard = ({ col, showFrom }) => {
     <Row xs={col}>
       {Items.map((item) => {
         return (
-          <Col key={item.MovieID} className="">
-            <Card className="bg-dark text-white">
+          <Col key={item.MovieID}>
+            <Card>
               <Link to={"/Moviepage/".concat(item.MovieID)}>
                 <img
                   style={{ height: "420px", width: "100%" }}
@@ -33,8 +33,7 @@ const MovieCard = ({ col, showFrom }) => {
                 />
               </Link>
             </Card>
-
-            <p className="text-center">{item.Title}</p>
+            <p className="text-center text-white mt-2">{item.Title}</p>
           </Col>
         );
       })}

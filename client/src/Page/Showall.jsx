@@ -24,7 +24,7 @@ function Showall() {
           </DropdownButton>
         </Row>
 
-        <MovieCard col={4} showFrom="ctList" />
+        <MovieCard col={4} showFrom="Moviepage" />
       </Container>
     </div>
   );
