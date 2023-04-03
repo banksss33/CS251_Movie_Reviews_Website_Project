@@ -43,16 +43,13 @@ app.get("/MovieListforSearch", (req, res) => {
 });
 
 app.get("/Moviepage", (req, res) => {
-  db.query(
-    "SELECT * FROM movie;",
-    (err, result) => {
-      if (err) {
-        console.log(err + "select movie list error");
-      } else {
-        res.send(result);
-      }
+  db.query("SELECT * FROM movie;", (err, result) => {
+    if (err) {
+      console.log(err + "select movie list error");
+    } else {
+      res.send(result);
     }
-  );
+  });
 });
 
 app.get("/getDirector", (req, res) => {
@@ -95,29 +92,23 @@ app.get("/getReview", (req, res) => {
 });
 
 app.get("/NewMovie", (req, res) => {
-  db.query(
-    "SELECT * FROM movie ORDER BY Year DESC LIMIT 5;",
-    (err, result) => {
-      if (err) {
-        console.log(err + "select new movie error");
-      } else {
-        res.send(result);
-      }
+  db.query("SELECT * FROM movie ORDER BY Year DESC LIMIT 5;", (err, result) => {
+    if (err) {
+      console.log(err + "select new movie error");
+    } else {
+      res.send(result);
     }
-  );
+  });
 });
 
 app.get("/RandMovie", (req, res) => {
-  db.query(
-    "SELECT * FROM movie ORDER BY RAND() LIMIT 5;",
-    (err, result) => {
-      if (err) {
-        console.log(err + "random movie error");
-      } else {
-        res.send(result);
-      }
+  db.query("SELECT * FROM movie ORDER BY RAND() LIMIT 5;", (err, result) => {
+    if (err) {
+      console.log(err + "random movie error");
+    } else {
+      res.send(result);
     }
-  );
+  });
 });
 
 app.listen(3001, () => {
