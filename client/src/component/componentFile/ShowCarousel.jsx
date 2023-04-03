@@ -23,6 +23,7 @@ function ShowCarousel({ showFrom }) {
         <Carousel.Item key={item.MovieID}>
           <Link to={"/Moviepage/".concat(item.MovieID)}>
             <img
+              style={{ height: "660px" }}
               className="d-block w-100 rounded-5"
               src={item.ImageLink}
               alt="Data not found!"
