@@ -14,7 +14,7 @@ function Moviepage() {
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/ctList").then((response) => {
+      axios.get("http://localhost:3001/Moviepage").then((response) => {
         setmovieList(response.data);
       });
     };
@@ -117,8 +117,9 @@ function Moviepage() {
                           // to show all the movie title
                           if (val.MovieID === ID) {
                             return (
-                              <div className="col-sm-3">
+                              <Col sm={3}>
                                 <img
+                                  style={{ objectFit: "cover" }}
                                   className="rounded-circle"
                                   src={val.ActorImageLink}
                                   Height="150px"
@@ -126,7 +127,7 @@ function Moviepage() {
                                   alt="Data not found!"
                                 ></img>
                                 <p>{val.ActorName}</p>
-                              </div>
+                              </Col>
                             );
                           }
                         })}
