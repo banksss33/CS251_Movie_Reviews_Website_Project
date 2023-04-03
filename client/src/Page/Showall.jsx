@@ -18,15 +18,13 @@ function Showall() {
           </DropdownButton>
         </Row>
 
-        <Row className="mt-4 ms-3">
+        <Row className="mt-4 mb-4 ms-3">
           <DropdownButton variant="outline-warning" title="Sort">
             <DropdownItem></DropdownItem>
           </DropdownButton>
         </Row>
 
-        <Row className="mt-5">
-          <MovieCard col={4} showFrom="ctList" />
-        </Row>
+        <MovieCard col={4} showFrom="ctList" />
       </Container>
     </div>
   );
