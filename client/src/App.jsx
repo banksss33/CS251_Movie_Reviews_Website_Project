@@ -13,27 +13,10 @@ import Moviepage from "./Page/Moviepage";
 import "../src/component/style/SearchBar.css";
 import { Col, Container, Row } from "react-bootstrap";
 import NotFound from "./Page/NotFound";
-import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
-
-export const CloudinaryContext = React.createContext();
-
-export const CloudinaryProvider = ({ children }) => {
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: "drn8zqbqe",
-    },
-  });
-  return (
-    <CloudinaryContext.Provider value={cld}>
-      {children}
-    </CloudinaryContext.Provider>
-  );
-};
 
 function App() {
   const [movieList, setmovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTitle, setSelectedTitle] = useState("All");
 
   const onchange = (event) => {
     setSearchTerm(event.target.value);
@@ -49,9 +32,6 @@ function App() {
     getmovie();
   }, []);
 
-  const handleSelect = (eventKey) => {
-    setSelectedTitle(eventKey);
-  };
   return (
     <BrowserRouter>
       <Navbar
