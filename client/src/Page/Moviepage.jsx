@@ -130,7 +130,7 @@ function Moviepage() {
                           //set image resolution and focus it on face
                           const showImageURL = cld
                             .image(val.ActorImageLink)
-                            .resize(fill().gravity(focusOn(FocusOn.face())))
+                            .resize(fill().width(350).height(350).gravity(focusOn(FocusOn.face())))
                             .setDeliveryType("fetch")
                             .toURL();
 
