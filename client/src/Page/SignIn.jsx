@@ -5,13 +5,26 @@ import "../component/style/SignIn.css";
 import 'boxicons'
 
 function SignIn() {
+
+  const [regValid, setRegValid] = useState([]);
+
+  useEffect(() => {
+    const getEmail = () => {
+      axios.get("http://localhost:3001/registerValid").then((response) => {
+        setRegValid(response.data);
+      });
+    };
+
+    getEmail();
+  }, []);
+
+  
   // valid Email
   const [emailMessage, setEmailMessage] = useState("");
-  const [emailValid, setEmailValid] = useState([]);
 
   const validateEmail = (event) => {
     const enteredEmail = event.target.value;
-    const isEmailUsed = emailValid.some((val) => val.Email === enteredEmail);
+    const isEmailUsed = regValid.some((val) => val.Email === enteredEmail);
     if (isEmailUsed) {
       setEmailMessage("This Email already used");
     } else {
@@ -24,7 +37,7 @@ function SignIn() {
 
   const validateNiackname = (event) => {
     const enteredNickName = event.target.value;
-    const isNickNameUsed = emailValid.some((val) => val.Nickname === enteredNickName);
+    const isNickNameUsed = regValid.some((val) => val.Nickname === enteredNickName);
     if (isNickNameUsed) {
       setNickNameMessage("This nick name already used");
     } else {
@@ -37,23 +50,13 @@ function SignIn() {
 
   const validateUsername = (event) => {
     const enteredUsername = event.target.value;
-    const isUsernameUsed = emailValid.some((val) => val.Username === enteredUsername);
+    const isUsernameUsed = regValid.some((val) => val.Username === enteredUsername);
     if (isUsernameUsed) {
       setUsernameMessage("This username already used");
     } else {
       setUsernameMessage("");
     }
   };  
-
-  useEffect(() => {
-    const getEmail = () => {
-      axios.get("http://localhost:3001/registerValid").then((response) => {
-        setEmailValid(response.data);
-      });
-    };
-
-    getEmail();
-  }, []);
 
 
   // Sliding between Login and Register
