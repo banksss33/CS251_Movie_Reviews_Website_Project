@@ -1,6 +1,6 @@
 const cloudinary = require("cloudinary").v2;
 const axios = require("axios");
-const { updateImageLink } = require("../server/app");
+const { updateImageLink } = require("../server/update");
 
 cloudinary.config({
   cloud_name: "drn8zqbqe",
@@ -11,7 +11,7 @@ cloudinary.config({
 async function uploadImageToCloudinary(url) {
   try {
     const response = await cloudinary.uploader.upload(url, {
-      folder: "MovieImage", // Upload images to the 'MovieLink' folder
+      folder: "ActorImage", // Upload images to the 'MovieLink' folder
     });
     console.log(`Image uploaded: ${response.secure_url}`);
     return response.secure_url;
@@ -23,7 +23,7 @@ async function uploadImageToCloudinary(url) {
 
 async function fetchImageUrls() {
   try {
-    const response = await axios.get("http://localhost:3001/Moviepage");
+    const response = await axios.get("http://localhost:3001/getActor");
     const imageUrls = response.data.map((item) => item);
     return imageUrls;
   } catch (error) {
@@ -37,10 +37,10 @@ async function main() {
 
   if (imageData.length > 0) {
     for (const data of imageData) {
-      const uploadedUrl = await uploadImageToCloudinary(data.ImageLink);
+      const uploadedUrl = await uploadImageToCloudinary(data.ActorImageLink);
 
       if (uploadedUrl) {
-        await updateImageLink(data.MovieID, uploadedUrl);
+        await updateImageLink(data.ActorID, uploadedUrl);
       }
     }
   } else {

@@ -6,6 +6,19 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+//import from Cloudinary
+import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { focusOn } from "@cloudinary/url-gen/qualifiers/gravity";
+import { FocusOn } from "@cloudinary/url-gen/qualifiers/focusOn";
+
+//Cloudinary instance
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: "drn8zqbqe",
+  },
+});
+
 function Moviepage() {
   const [movieList, setmovieList] = useState([]);
   const [directorList, setdirectorList] = useState([]);
@@ -109,29 +122,37 @@ function Moviepage() {
                       </div>
                     </Row>
                     <Row className="mb-3">
-                      <div style={{ display: "flex" }}>
+                      <Row>
                         <p className="col-sm-2 ps-3  border-start border-warning border-4">
                           <strong>Stars</strong>
                         </p>
                         {actorList.map((val, key) => {
+                          //set image resolution and focus it on face
+                          const showImageURL = cld
+                            .image(val.ActorImageLink)
+                            .resize(
+                              fill()
+                                .width(150)
+                                .height(150)
+                                .gravity(focusOn(FocusOn.face()))
+                            )
+                            .setDeliveryType("fetch")
+                            .toURL();
+
                           // to show all the movie title
                           if (val.MovieID === ID) {
                             return (
                               <Col sm={3}>
                                 <img
-                                  style={{ objectFit: "cover" }}
                                   className="rounded-circle"
-                                  src={val.ActorImageLink}
-                                  Height="150px"
-                                  width="150px"
-                                  alt="Data not found!"
-                                ></img>
+                                  src={showImageURL}
+                                />
                                 <p>{val.ActorName}</p>
                               </Col>
                             );
                           }
                         })}
-                      </div>
+                      </Row>
                     </Row>
                   </Col>
                 </Row>

@@ -30,10 +30,11 @@ function SignIn() {
           </div>
         </div>
 
-        <div className={`logreg-box ${isRegisterActive ? 'active' : ''}`}>
-
+        <div className={`logreg-box ${isRegisterActive ? "active" : ""}`}>
           {/* Sign In */}
-          <div className={`form-box login ${!isRegisterActive ? 'active' : ''}`}>
+          <div
+            className={`form-box login ${!isRegisterActive ? "active" : ""}`}
+          >
             <form action="#">
               <h2>Sign In</h2>
 
@@ -56,7 +57,11 @@ function SignIn() {
               <div className="login-register">
                 <p>
                   Don't have an account?{" "}
-                  <a href="#" className="register-link" onClick={handleRegisterClick}>
+                  <a
+                    href="#"
+                    className="register-link"
+                    onClick={handleRegisterClick}
+                  >
                     Register
                   </a>
                 </p>
@@ -65,7 +70,9 @@ function SignIn() {
           </div>
 
           {/* Register */}
-          <div className={`form-box register ${isRegisterActive ? 'active' : ''}`}>
+          <div
+            className={`form-box register ${isRegisterActive ? "active" : ""}`}
+          >
             <form action="#">
               <h2>Register</h2>
 

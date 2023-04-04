@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 
 function updateImageLink(movieId, newImageUrl) {
   return new Promise((resolve, reject) => {
-    const query = "UPDATE movie SET ImageLink=? WHERE MovieID=?";
+    const query = "UPDATE actor SET ActorImageLink=? WHERE ActorID=?";
 
     db.query(query, [newImageUrl, movieId], (error, results, fields) => {
       if (error) {
