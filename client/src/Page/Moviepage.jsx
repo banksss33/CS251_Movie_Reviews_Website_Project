@@ -130,12 +130,7 @@ function Moviepage() {
                           //set image resolution and focus it on face
                           const showImageURL = cld
                             .image(val.ActorImageLink)
-                            .resize(
-                              fill()
-                                .width(150)
-                                .height(150)
-                                .gravity(focusOn(FocusOn.face()))
-                            )
+                            .resize(fill().gravity(focusOn(FocusOn.face())))
                             .setDeliveryType("fetch")
                             .toURL();
 
@@ -144,6 +139,13 @@ function Moviepage() {
                             return (
                               <Col sm={3}>
                                 <img
+                                  style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    maxHeight: "150px",
+                                    maxWidth: "150px",
+                                    objectFit: "cover",
+                                  }}
                                   className="rounded-circle"
                                   src={showImageURL}
                                 />
