@@ -1,9 +1,62 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import "../component/style/SignIn.css";
 import 'boxicons'
 
 function SignIn() {
+  // valid Email
+  const [emailMessage, setEmailMessage] = useState("");
+  const [emailValid, setEmailValid] = useState([]);
+
+  const validateEmail = (event) => {
+    const enteredEmail = event.target.value;
+    const isEmailUsed = emailValid.some((val) => val.Email === enteredEmail);
+    if (isEmailUsed) {
+      setEmailMessage("This Email already used");
+    } else {
+      setEmailMessage("");
+    }
+  };
+
+  // Valid Nickname
+  const [nickNameMessage, setNickNameMessage] = useState("");
+
+  const validateNiackname = (event) => {
+    const enteredNickName = event.target.value;
+    const isNickNameUsed = emailValid.some((val) => val.Nickname === enteredNickName);
+    if (isNickNameUsed) {
+      setNickNameMessage("This nick name already used");
+    } else {
+      setNickNameMessage("");
+    }
+  };
+
+  // Valid Nickname
+  const [usernameMessage, setUsernameMessage] = useState("");
+
+  const validateUsername = (event) => {
+    const enteredUsername = event.target.value;
+    const isUsernameUsed = emailValid.some((val) => val.Username === enteredUsername);
+    if (isUsernameUsed) {
+      setUsernameMessage("This username already used");
+    } else {
+      setUsernameMessage("");
+    }
+  };  
+
+  useEffect(() => {
+    const getEmail = () => {
+      axios.get("http://localhost:3001/registerValid").then((response) => {
+        setEmailValid(response.data);
+      });
+    };
+
+    getEmail();
+  }, []);
+
+
+  // Sliding between Login and Register
   const [isRegisterActive, setIsRegisterActive] = useState(false);
 
   const handleRegisterClick = () => {
@@ -78,32 +131,36 @@ function SignIn() {
               <h2>Register</h2>
 
               <div className="input-box">
-                <input type="email" required />
+                <input id="email" type="email" required onChange={validateEmail}/>
                 <label>Email</label>
+                <p>{emailMessage}</p>
+                
               </div>
 
               <div className="input-box">
-                <input type="text" required />
+                <input id="fname" type="text" required />
                 <label>first name</label>
               </div>
 
               <div className="input-box">
-                <input type="text" required />
+                <input id="lname" type="text" required />
                 <label>last name</label>
               </div>
 
               <div className="input-box">
-                <input type="text" required />
+                <input id="nickname" type="text" required onChange={validateNiackname}/>
                 <label>nick name</label>
+                <p>{nickNameMessage}</p>
               </div>
 
               <div className="input-box">
-                <input type="text" required />
+                <input id="username" type="text" required onChange={validateUsername}/>
                 <label>username</label>
+                <p>{usernameMessage}</p>
               </div>
 
               <div className="input-box">
-                <input type="password" required />
+                <input id="password" type="password" required />
                 <label>password</label>
               </div>
 

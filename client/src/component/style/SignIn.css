@@ -153,13 +153,6 @@
     top: -5px;
 }
 
-.input-box .icon {
-    position: absolute;
-    top: 13px;
-    right: 0;
-    font-size: 19px;
-}
-
 .btnS {
     width: 100%;
     height: 45px;
@@ -189,4 +182,9 @@
 
 .login-register p a:hover {
     text-decoration: underline;
+}
+
+.input-box p {
+    color: red;
+    font-size: 14px;
 }

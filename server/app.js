@@ -101,6 +101,22 @@ app.get("/RandMovie", (req, res) => {
   });
 });
 
+
+
+
+
+// account
+
+app.get("/registerValid", (req, res) => {
+  db.query("SELECT Username, Email, Nickname FROM profile JOIN account WHERE account.UserID=profile.UserID;", (err, result) => {
+    if (err) {
+      console.log(err + "select profile error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log("server running on port 3001");
 });
