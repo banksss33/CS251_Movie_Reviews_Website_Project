@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "../component/style/SignIn.css";
+import 'boxicons'
 
 function SignIn() {
   const [isRegisterActive, setIsRegisterActive] = useState(false);
@@ -93,12 +94,17 @@ function SignIn() {
 
               <div className="input-box">
                 <input type="text" required />
+                <label>nick name</label>
+              </div>
+
+              <div className="input-box">
+                <input type="text" required />
                 <label>username</label>
               </div>
 
               <div className="input-box">
                 <input type="password" required />
-                <label>Password</label>
+                <label>password</label>
               </div>
 
               <button type="submit" className="btnS">

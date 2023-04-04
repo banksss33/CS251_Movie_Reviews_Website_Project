@@ -141,6 +141,13 @@
     transition: .5s ease;
 }
 
+.input-box .icon {
+    position: absolute;
+    right: 0;
+    top: 13px;
+    font-size: 19px;
+}
+
 .input-box input:focus~label,
 .input-box input:valid~label {
     top: -5px;

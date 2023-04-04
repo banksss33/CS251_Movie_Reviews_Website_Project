@@ -32,16 +32,6 @@ app.get("/MovieCardDefault", (req, res) => {
   });
 });
 
-app.get("/MovieListforSearch", (req, res) => {
-  db.query("SELECT Title FROM movie;", (err, result) => {
-    if (err) {
-      console.log(err + "select movie list error");
-    } else {
-      res.send(result);
-    }
-  });
-});
-
 app.get("/Moviepage", (req, res) => {
   db.query("SELECT * FROM movie;", (err, result) => {
     if (err) {

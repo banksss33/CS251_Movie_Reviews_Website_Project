@@ -13,6 +13,8 @@ import Moviepage from "./Page/Moviepage";
 import "../src/component/style/SearchBar.css";
 import { Col, Container, Row } from "react-bootstrap";
 import NotFound from "./Page/NotFound";
+import Button from 'react-bootstrap/Button';
+import 'boxicons'
 
 function App() {
   const [movieList, setmovieList] = useState([]);
@@ -24,7 +26,7 @@ function App() {
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/ctList").then((response) => {
+      axios.get("http://localhost:3001/Moviepage").then((response) => {
         setmovieList(response.data);
       });
     };
@@ -49,7 +51,7 @@ function App() {
 
         <Nav className="flex-grow-1">
           <InputGroup>
-            <InputGroup.Text>Icon</InputGroup.Text>
+            <InputGroup.Text><box-icon name='search' ></box-icon></InputGroup.Text>
 
             <Form.Control
               id="searchmovie"
@@ -73,22 +75,23 @@ function App() {
                 .map((val, key) => {
                   // to show all the movie title
                   return (
-                    <Row key={key}>
+                    <Row key={key} className="rowSearch">
                       <Col>
                         <Link
-                          className=""
+                          className="clickSearch"
                           onClick={() => {
                             setSearchTerm(val.Title);
                           }}
                           to={"/Moviepage/".concat(val.MovieID)}
                         >
-                          {val.Title}
+                          <a>{val.Title}</a>
                         </Link>
                       </Col>
                     </Row>
                   );
                 })}
             </Container>
+            <Button variant="outline-warning" onClick={() => {setSearchTerm("");}}>Clear</Button>
           </InputGroup>
         </Nav>
 
