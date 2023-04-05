@@ -117,6 +117,16 @@ app.get("/registerValid", (req, res) => {
   });
 });
 
+app.get("/signIn", (req, res) => {
+  db.query("SELECT * FROM profile JOIN account WHERE account.UserID=profile.UserID;", (err, result) => {
+    if (err) {
+      console.log(err + "select sign in error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log("server running on port 3001");
 });
