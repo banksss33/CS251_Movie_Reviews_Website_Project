@@ -29,7 +29,6 @@ function Hub() {
       <div
         className="vignette border-bottom border-warning "
         style={{
-          zIndex: "1",
           backgroundImage: `url("https://res.cloudinary.com/drn8zqbqe/image/upload/v1680773820/shutterstock_2141337051_vx8cut.jpg")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -80,50 +79,23 @@ function Hub() {
 
       <div
         style={{
-          zIndex: "-1",
+          backgroundImage: `url("https://res.cloudinary.com/drn8zqbqe/image/upload/v1680782769/Shutterstock_769937509_1_kkdsii.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           width: "100%",
-          height: "100%",
-          paddingLeft: "10%",
-          paddingRight: "10%",
+          height: "100vh",
+          paddingLeft: "9%",
+          paddingRight: "9%",
         }}
       >
         <Container
           style={{
-            backgroundColor: "#51484f",
+            backgroundColor: "#708090",
             width: "100%",
             height: "100%",
+            opacity: "0.99",
           }}
-        >
-          {" "}
-          {/* Container1 */}
-          <Row>
-            {" "}
-            {/* Container2 */}
-            <span className="d-inline p-2 mb-4 text-white border-start border-warning">
-              <h1>New</h1>
-            </span>{" "}
-            {/* Container3 */}
-            <ShowCarousel showFrom="NewMovie" />
-          </Row>{" "}
-          {/*Popular*/}
-          <Row className="mt-5">
-            {/* Container2 */}
-            <span className="d-inline p-2 mb-4 text-white border-start border-warning">
-              <h1>Popular</h1>
-            </span>
-            {/* Container3 */}
-            <ShowCarousel showFrom="ctList" />
-          </Row>
-          {/*Popular*/}
-          <Row className="mt-5">
-            {/* Container2 */}
-            <span className="d-inline p-2 mb-4 text-white border-start border-warning">
-              <h1>Random</h1>
-            </span>
-            {/* Container3 */}
-            <ShowCarousel showFrom="RandMovie" />
-          </Row>
-        </Container>
+        ></Container>
       </div>
     </>
   );
