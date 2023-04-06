@@ -13,16 +13,17 @@ import Moviepage from "./Page/Moviepage";
 import "../src/component/style/SearchBar.css";
 import { Col, Container, Row } from "react-bootstrap";
 import NotFound from "./Page/NotFound";
-import Button from 'react-bootstrap/Button';
-import 'boxicons'
+import Button from "react-bootstrap/Button";
+import { Offcanvas } from "react-bootstrap";
 
 function App() {
   const [movieList, setmovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [show, setShow] = useState(false);
 
-  const onchange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const handleShow = () => setShow(true);
+
+  const onchange = (event) => setSearchTerm(event.target.value);
 
   useEffect(() => {
     const getmovie = () => {
@@ -37,22 +38,27 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar
-        bg="dark"
+        fixed="top"
         variant="dark"
-        className="d-flex justify-content-center"
+        className="d-flex shadow justify-content-between"
         style={{
           paddingLeft: "40px",
           paddingRight: "40px",
-          zIndex: "999"
+          zIndex: 999,
         }}
       >
         <LinkContainer to="/">
-          <Navbar.Brand>Blockbuster</Navbar.Brand>
+          <Navbar.Brand>!ICON!</Navbar.Brand>
         </LinkContainer>
 
-        <Nav className="flex-grow-1">
+        <Nav>
           <InputGroup>
-            <InputGroup.Text><box-icon name='search' ></box-icon></InputGroup.Text>
+            <InputGroup.Text
+              className="shadow"
+              style={{ backgroundColor: "transparent", border: "none" }}
+            >
+              <box-icon name="search" />
+            </InputGroup.Text>
 
             <Form.Control
               id="searchmovie"
@@ -61,7 +67,9 @@ function App() {
               value={searchTerm}
               placeholder="Search"
               onChange={onchange}
-              className="border border-warning"
+              style={{ backgroundColor: "transparent", border: "none" }}
+              className="shadow text-light"
+              
             />
             {/* Data results */}
             <Container className="dropdownSearch">
@@ -81,7 +89,7 @@ function App() {
                         <Link
                           className="clickSearch"
                           onClick={() => {
-                            setSearchTerm(val.Title);
+                            setSearchTerm("");
                           }}
                           to={"/Moviepage/".concat(val.MovieID)}
                         >
@@ -92,18 +100,10 @@ function App() {
                   );
                 })}
             </Container>
-            <Button variant="outline-warning" onClick={() => {setSearchTerm("");}}>Clear</Button>
           </InputGroup>
-        </Nav>
 
-        <Nav
-          style={{
-            marginLeft: "100px",
-          }}
-          className="border-start border-secondary rounded-0"
-        >
           <LinkContainer to="/WatchList">
-            <Nav.Link>Watch list</Nav.Link>
+            <Nav.Link>WatchList</Nav.Link>
           </LinkContainer>
 
           <LinkContainer to="/SignIn">

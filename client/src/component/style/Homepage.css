@@ -1,0 +1,8 @@
+.vignette {
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 50px 130px 600px rgba(0, 0, 0, 1) inset;
+}

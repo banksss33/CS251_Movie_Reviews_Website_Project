@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.transparent-navbar {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.0
+  ); /* Adjust the last value (0.8) to change transparency */
+}
