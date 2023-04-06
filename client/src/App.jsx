@@ -15,13 +15,15 @@ import { Col, Container, Row } from "react-bootstrap";
 import NotFound from "./Page/NotFound";
 import Button from "react-bootstrap/Button";
 import { Offcanvas } from "react-bootstrap";
+import Assitance from "./component/componentFile/Assitance";
 
 function App() {
   const [movieList, setmovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [show, setShow] = useState(false);
 
-  const handleShow = () => setShow(true);
+  const [showText, setshowText] = useState(false); //for show character text
+  const [stateIndex, setstateIndex] = useState(0);
 
   const onchange = (event) => setSearchTerm(event.target.value);
 
@@ -69,7 +71,6 @@ function App() {
               onChange={onchange}
               style={{ backgroundColor: "transparent", border: "none" }}
               className="shadow text-light"
-              
             />
             {/* Data results */}
             <Container className="dropdownSearch">
@@ -111,7 +112,11 @@ function App() {
           </LinkContainer>
         </Nav>
       </Navbar>
-
+      <Assitance
+        stateIndex={stateIndex}
+        showText={showText}
+        setshowText={setshowText}
+      />
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />

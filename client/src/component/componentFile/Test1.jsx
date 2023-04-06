@@ -6,7 +6,7 @@ function Test1() {
   return (
     <>
       <p>{isShown}</p>
-      <Assitance setCount={setCount}/>
+    
     </>
   );
 }

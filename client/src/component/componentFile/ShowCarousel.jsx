@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
 
-function ShowCarousel({ showFrom }) {
+function ShowCarousel({ showFrom, setshowText }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {

@@ -12,9 +12,9 @@ const root = document.getElementById("root");
 // required parameter to fetch images
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <App />
-  </React.StrictMode>,
+  </>,
   root
 );
 
