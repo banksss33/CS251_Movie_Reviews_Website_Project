@@ -69,7 +69,7 @@ function App() {
               value={searchTerm}
               placeholder="Search"
               onChange={onchange}
-              style={{ backgroundColor: "transparent", border: "none" }}
+              style={{ backgroundColor: "transparent", border: "none", width: "500px"}}
               className="shadow text-light"
             />
             {/* Data results */}

@@ -3,7 +3,7 @@ import axios from "axios";
 
 import "../component/style/SignIn.css";
 import "boxicons";
-import { redirect } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 function SignIn() {
   const [regValid, setRegValid] = useState([]);
@@ -278,7 +278,7 @@ function SignIn() {
             <div className="form-box">
             <h2>Sign out</h2>
               <button type="submit" className="btnS" onClick={signOut}>
-                  Sign Out
+                <Link to="/" className="btnS">Sign Out</Link>
               </button>
             </div>
           </div>

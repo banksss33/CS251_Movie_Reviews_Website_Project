@@ -23,6 +23,7 @@ function Hub() {
   const props1 = useDelayedOpacity(400);
   const props2 = useDelayedOpacity(1200);
   const props3 = useDelayedOpacity(1700);
+  const props4 = useDelayedOpacity(2000);
 
   return (
     <>
@@ -71,7 +72,17 @@ function Hub() {
               }}
               className="text-warning "
             >
-              <Button variant="outline-warning"> Sign Up</Button>
+              <Button variant="outline-warning"><Link to="/SignIn" style={{textDecoration: "none", color: "#fff"}}>Sign In</Link></Button>
+            </animated.div>
+            <animated.div
+              style={{
+                fontSize: "30px",
+                textShadow: "4px 4px 8px rgba(0, 0, 0, 0.5)",
+                ...props4,
+              }}
+              className="text-light"
+            >
+              For rate and write your own review
             </animated.div>
           </Row>
         </Container>
