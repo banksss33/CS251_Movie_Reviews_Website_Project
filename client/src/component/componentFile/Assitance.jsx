@@ -31,6 +31,7 @@ function Assitance({ showText, setshowText, stateIndex, setstateIndex }) {
             <Popover.Body>
               <strong> I'm PopCorn-Meter website's Mascot PROTOTYPE!</strong>
               <p>!!!Everything is prototype also my Image!!!</p>
+              <p>and in the future you can click to hide me</p>
               <p>YOU CAN DRAG ME AROUND!</p>
               <p>YOU CAN DRAG ME AROUND!</p>
             </Popover.Body>

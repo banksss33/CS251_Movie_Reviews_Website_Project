@@ -112,11 +112,7 @@ function App() {
           </LinkContainer>
         </Nav>
       </Navbar>
-      <Assitance
-        stateIndex={stateIndex}
-        showText={showText}
-        setshowText={setshowText}
-      />
+      
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />
