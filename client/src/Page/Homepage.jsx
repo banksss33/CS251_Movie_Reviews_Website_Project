@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import "../component/style/Homepage.css";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 function useDelayedOpacity(delay) {
   const animatedProps = useSpring({
@@ -64,6 +65,7 @@ function Hub() {
             >
               with PopcornMeter
             </animated.div>
+            
             <animated.div
               style={{
                 fontSize: "40px",
@@ -72,7 +74,9 @@ function Hub() {
               }}
               className="text-warning "
             >
-              <Button variant="outline-warning"><Link to="/SignIn" style={{textDecoration: "none", color: "#fff"}}>Sign In</Link></Button>
+              <LinkContainer to="/SignIn" className="btn btn-outline-warning">
+                <Link>SignIn</Link>
+              </LinkContainer>
             </animated.div>
             <animated.div
               style={{

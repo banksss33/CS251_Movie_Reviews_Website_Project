@@ -1,0 +1,8 @@
+.review-box {
+    width: 100%;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px;
+}

@@ -5,6 +5,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import "../component/style/MoviePage.css"
 
 //import from Cloudinary
 import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
@@ -130,7 +131,12 @@ function Moviepage() {
                           //set image resolution and focus it on face
                           const showImageURL = cld
                             .image(val.ActorImageLink)
-                            .resize(fill().width(350).height(350).gravity(focusOn(FocusOn.face())))
+                            .resize(
+                              fill()
+                                .width(350)
+                                .height(350)
+                                .gravity(focusOn(FocusOn.face()))
+                            )
                             .setDeliveryType("fetch")
                             .toURL();
 
@@ -180,7 +186,7 @@ function Moviepage() {
                         >
                           <Row>
                             <div className="col-sm-8 ps-5">
-                              <p>{val.Nickname}</p>
+                              <h5>{val.Nickname}</h5>
                               <p>{val.Date}</p>
                             </div>
 
@@ -212,6 +218,55 @@ function Moviepage() {
                     }
                   })}
                 </Row>
+                {localStorage.getItem("yourName") === "" ? (
+                  <div
+                    className="p-3 rounded-4 mt-5"
+                    style={{
+                      background: "#679267",
+                    }}
+                  >
+                    <h3>Only member can Rate Score</h3>
+                  </div>
+                ) : (
+                  <div>
+                    <h3>Rate your opinion</h3>
+                  <div
+                    className="p-3 rounded-4"
+                    style={{
+                      background: "#679267",
+                    }}
+                  >
+                    <Row>
+                      <div className="col-sm-8 ps-5">
+                        <h5>{localStorage.getItem("yourName")}</h5>
+                      </div>
+
+                      <div
+                        className="col-sm-4"
+                        style={{
+                          display: "flex",
+                          justifyContent: "right",
+                        }}
+                      >
+                        <input type="number"/>
+                        <img className="p-3" src="#" alt="popcorn" />
+                      </div>
+                    </Row>
+                    <hr />
+                    <Row>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          minHeight: "100px",
+                        }}
+                      >
+                        <textarea className="review-box"/>
+                      </div>
+                    </Row>
+                  </div>
+                  </div>
+                )}
               </Container>
             );
           }

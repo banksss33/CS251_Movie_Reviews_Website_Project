@@ -4,6 +4,7 @@ import axios from "axios";
 import "../component/style/SignIn.css";
 import "boxicons";
 import { Link, redirect } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 
 function SignIn() {
   const [regValid, setRegValid] = useState([]);
@@ -275,11 +276,15 @@ function SignIn() {
         ) : (
           <div className="logreg-box">
             
-            <div className="form-box">
-            <h2>Sign out</h2>
-              <button type="submit" className="btnS" onClick={signOut}>
-                <Link to="/" className="btnS">Sign Out</Link>
-              </button>
+            <div className="form-box flex-column">
+            <div style={{padding: "50px"}}>
+              <h2>
+                Sign Out
+              </h2>
+            </div>
+            <LinkContainer to="/" className="btnS w-60" onClick={signOut}>
+            <Link className="signOutText">Sign out</Link>
+            </LinkContainer>
             </div>
           </div>
         )}

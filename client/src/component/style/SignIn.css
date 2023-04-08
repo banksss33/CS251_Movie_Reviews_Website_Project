@@ -167,6 +167,23 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
+.w-60 {
+    width: 60%;
+}
+
+.signOutText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.signOutText:hover {
+    color: #fff;
+    font-size: larger;
+}
+
 .form-box .login-register {
     font-size: 14.5px;
     font-weight: 500;
