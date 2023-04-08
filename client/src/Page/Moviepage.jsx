@@ -5,6 +5,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import ReviewBox from "../component/componentFile/ReviewBox";
 import "../component/style/MoviePage.css"
 
 //import from Cloudinary
@@ -60,14 +61,7 @@ function Moviepage() {
   let Param = useParams();
   let ID = parseInt(Param.ID);
   return (
-    <body
-      style={{
-        backgroundColor: "#51484f",
-        padding: "100px 125px",
-        color: "#fff",
-      }}
-      className="d-flex"
-    >
+    <body className="body d-flex">
       <Container>
         {movieList.map((val) => {
           // to show all the movie title
@@ -95,16 +89,13 @@ function Moviepage() {
                     />
                   </Col>
                   <Col
-                    className="col-sm-7"
-                    style={{
-                      fontSize: "20px",
-                    }}
+                    className="col-sm-7 fs-20"
                   >
                     <Row className="mb-3">
                       <p>{val.Description}</p>
                     </Row>
                     <Row className="mb-3">
-                      <div style={{ display: "flex" }}>
+                      <div className="d-flex">
                         <p className="col-sm-2 ps-3  border-start border-warning border-4">
                           <strong>Director</strong>
                         </p>
@@ -144,15 +135,7 @@ function Moviepage() {
                           if (val.MovieID === ID) {
                             return (
                               <Col sm={3}>
-                                <img
-                                  style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    maxHeight: "150px",
-                                    maxWidth: "150px",
-                                    objectFit: "cover",
-                                  }}
-                                  className="rounded-circle"
+                                <img className="rounded-circle img-actor"
                                   src={showImageURL}
                                 />
                                 <p>{val.ActorName}</p>
@@ -228,44 +211,7 @@ function Moviepage() {
                     <h3>Only member can Rate Score</h3>
                   </div>
                 ) : (
-                  <div>
-                    <h3>Rate your opinion</h3>
-                  <div
-                    className="p-3 rounded-4"
-                    style={{
-                      background: "#679267",
-                    }}
-                  >
-                    <Row>
-                      <div className="col-sm-8 ps-5">
-                        <h5>{localStorage.getItem("yourName")}</h5>
-                      </div>
-
-                      <div
-                        className="col-sm-4"
-                        style={{
-                          display: "flex",
-                          justifyContent: "right",
-                        }}
-                      >
-                        <input type="number"/>
-                        <img className="p-3" src="#" alt="popcorn" />
-                      </div>
-                    </Row>
-                    <hr />
-                    <Row>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          minHeight: "100px",
-                        }}
-                      >
-                        <textarea className="review-box"/>
-                      </div>
-                    </Row>
-                  </div>
-                  </div>
+                  <ReviewBox/>
                 )}
               </Container>
             );

@@ -1,0 +1,55 @@
+.d-flex-right {
+    display: flex;
+    justify-content: right;
+}
+
+.d-flex-end {
+    display: flex;
+    justify-content: end;
+}
+
+
+.review-content {
+    display: flex;
+    justify-content: center;
+    min-height: 100px;
+}
+
+
+.star-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .range-slider {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .star-rating-icons {
+    display: flex;
+  }
+  
+  .star-rating-icons label {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .star-rating-icons img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .star-rating-icons img:hover,
+  .star-rating-icons input:hover ~ img,
+  .star-rating-icons img:hover ~ input {
+    filter: grayscale(30%);
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
