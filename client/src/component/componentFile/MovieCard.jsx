@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
-import styles from "../style/MovieCard.css";
+import "../style/MovieCard.css";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 
