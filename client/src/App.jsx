@@ -69,7 +69,11 @@ function App() {
               value={searchTerm}
               placeholder="Search"
               onChange={onchange}
-              style={{ backgroundColor: "transparent", border: "none", width: "500px"}}
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                width: "500px",
+              }}
               className="shadow text-light"
             />
             {/* Data results */}
@@ -85,19 +89,32 @@ function App() {
                 .map((val, key) => {
                   // to show all the movie title
                   return (
-                    <Row key={key} className="rowSearch">
-                      <Col>
-                        <Link
-                          className="clickSearch"
-                          onClick={() => {
-                            setSearchTerm("");
-                          }}
-                          to={"/Moviepage/".concat(val.MovieID)}
-                        >
-                          <a>{val.Title}</a>
-                        </Link>
-                      </Col>
-                    </Row>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={`/Moviepage/${val.MovieID}`}
+                      onClick={() => {
+                        setSearchTerm("");
+                      }}
+                    >
+                      <Row key={key} className="rowSearch border-bottom">
+                        <Col className="d-flex">
+                          <img
+                            style={{
+                              paddingTop: "0.5%",
+                              paddingBottom: "0.5%",
+                              width: "75px",
+                              height: "100%",
+                              minHeight: "105px",
+                            }}
+                            src={val.ImageLink}
+                          />
+                          <div className="clickSearch">
+                            <strong>{val.Title}</strong>
+                            <p>{val.Year}</p>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Link>
                   );
                 })}
             </Container>
@@ -112,7 +129,7 @@ function App() {
           </LinkContainer>
         </Nav>
       </Navbar>
-      
+
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path="/SignIn" element={<SignIn />} />

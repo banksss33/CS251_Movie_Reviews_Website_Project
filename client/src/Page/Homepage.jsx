@@ -89,15 +89,7 @@ function Hub() {
             height: "100%",
           }}
         >
-          <span
-            className="d-block p-2 text-white"
-            style={{
-              position: "absolute",
-              zIndex: "1",
-              marginLeft: "2.5%",
-              marginTop: "2.5%",
-            }}
-          >
+          <span className="d-block p-2 text-white carousel-head">
             <strong>NEW</strong>
           </span>
           <ShowCarousel showFrom="ctList" label="New" />
@@ -110,15 +102,7 @@ function Hub() {
             height: "100%",
           }}
         >
-          <span
-            className="d-block p-2 text-white"
-            style={{
-              position: "absolute",
-              zIndex: "1",
-              marginLeft: "2.5%",
-              marginTop: "2.5%",
-            }}
-          >
+          <span className="d-block p-2 text-white carousel-head">
             <strong>POPULAR</strong>
           </span>
           <ShowCarousel showFrom="ctList" label="New" />
@@ -131,18 +115,10 @@ function Hub() {
             height: "100%",
           }}
         >
-          <span
-            className="d-block p-2 text-white"
-            style={{
-              position: "absolute",
-              zIndex: "1",
-              marginLeft: "2.5%",
-              marginTop: "2.5%",
-            }}
-          >
+          <span className="d-block p-2 text-white carousel-head">
             <strong>RANDOM</strong>
           </span>
-          <ShowCarousel showFrom="ctList" label="New" />
+          <ShowCarousel showFrom="ctList" />
         </Container>
       </div>
     </>

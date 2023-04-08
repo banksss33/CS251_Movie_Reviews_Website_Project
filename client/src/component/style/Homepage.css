@@ -25,3 +25,10 @@
   padding-left: 9%;
   padding-right: 9%;
 }
+
+.carousel-head {
+  position: absolute;
+  z-index: 1;
+  margin-left: 3%;
+  margin-top: 4.5%;
+}
