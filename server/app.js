@@ -22,8 +22,28 @@ app.get("/ctList", (req, res) => {
   });
 });
 
+app.get("/Moviepage", (req, res) => {
+  db.query("SELECT * FROM movie", (err, result) => {
+    if (err) {
+      console.log(err + "select movie error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/getGenres", (req, res) => {
+  db.query("SELECT * FROM genres", (err, result) => {
+    if (err) {
+      console.log(err + "select genres error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.get("/MovieCardDefault", (req, res) => {
-  db.query("SELECT ImageLink, Title FROM movie;", (err, result) => {
+  db.query("SELECT MovieID, Title FROM movie;", (err, result) => {
     if (err) {
       console.log(err + "select movie card error");
     } else {

@@ -1,0 +1,13 @@
+.showed-select {
+    color: #fff;
+}
+
+.genre-text {
+    display: flex;
+    justify-content: right;
+}
+
+.sort-text {
+    display: flex;
+    justify-content: right;
+}

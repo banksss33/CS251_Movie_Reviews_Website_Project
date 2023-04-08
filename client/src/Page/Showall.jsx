@@ -1,29 +1,24 @@
 import { Container, DropdownButton, Row } from "react-bootstrap";
 import MovieCard from "../component/componentFile/MovieCard";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import "../component/style/showall.css"
 
 function Showall() {
   const [selectedSort, setSelectedSort] = useState("Default");
   const [selectedGenre, setSelectedGenre] = useState("Default");
+  const [allGenre, setAllGenre] = useState([]);
 
-  const genres = [
-    "Action",
-    "Adventure",
-    "Biography",
-    "Crime",
-    "Drama",
-    "Family",
-    "Fantasy",
-    "History",
-    "Mystery",
-    "Romance",
-    "Sci-Fi",
-    "Thriller",
-    "War",
-    "Western",
-  ];
+  useEffect(() => {
+    const getGenres = () => {
+      axios.get("http://localhost:3001/getGenres").then((response) => {
+        setAllGenre(response.data);
+      });
+    };
+
+    getGenres();
+  }, []);
 
   const handleGenreSelect = (genre) => {
     setSelectedGenre(genre);
@@ -32,6 +27,7 @@ function Showall() {
   const handleSortSelect = (sort) => {
     setSelectedSort(sort);
   };
+
 
   return (
     <div
@@ -42,14 +38,16 @@ function Showall() {
       className="d-flex"
     >
       <Container>
+        <div className="row">
+        <div className="flex-column col-8">
         <Row className="ms-3">
           <DropdownButton variant="outline-warning" title="Genre">
-            {genres.map((genre) => (
+            {allGenre.map((val) => (
               <DropdownItem
-                key={genre}
-                onClick={() => handleGenreSelect(genre)}
+                key={val.Genre}
+                onClick={() => handleGenreSelect(val.Genre)}
               >
-                {genre}
+                {val.Genre}
               </DropdownItem>
             ))}
           </DropdownButton>
@@ -68,6 +66,12 @@ function Showall() {
             </DropdownItem>
           </DropdownButton>
         </Row>
+        </div>
+        <div className="flex-column col-4 showed-select">
+          <h2 className="genre-text">{selectedGenre}</h2>
+          <h3 className="sort-text">{selectedSort}</h3>
+        </div>
+        </div>
 
         <MovieCard
           col={4}
