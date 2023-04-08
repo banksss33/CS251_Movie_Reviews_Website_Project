@@ -117,22 +117,25 @@ app.get("/getMovies", (req, res) => {
   const genre = req.query.genre;
 
   switch (sort) {
-    case "sortByNewestYear":
+    case "Newest":
       sortQuery = "ORDER BY movie.Year DESC";
       break;
-    case "sortByOldestYear":
+    case "Oldest":
       sortQuery = "ORDER BY movie.Year ASC";
       break;
-    case "Default":
+    default:
       sortQuery = "";
   }
 
-  if (genre === "Default") {
-    var sql = `
+  switch (genre) {
+    case "All":
+      var sql = `
     SELECT * FROM movie ${sortQuery} ;
     `;
-  } else {
-    var sql = `
+      break;
+
+    default:
+      var sql = `
     SELECT * FROM movie 
     JOIN classify ON movie.MovieID = classify.MovieID 
     JOIN genres ON genres.GenreID = classify.GenreID 

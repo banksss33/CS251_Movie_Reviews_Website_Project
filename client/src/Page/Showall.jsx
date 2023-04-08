@@ -1,4 +1,4 @@
-import { Container, DropdownButton, Row } from "react-bootstrap";
+import { Col, Container, DropdownButton, Row } from "react-bootstrap";
 import MovieCard from "../component/componentFile/MovieCard";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import "../component/style/showall.css";
 
 function Showall() {
   const [selectedSort, setSelectedSort] = useState("Default");
-  const [selectedGenre, setSelectedGenre] = useState("Default");
+  const [selectedGenre, setSelectedGenre] = useState("All");
   const [allGenre, setAllGenre] = useState([]);
 
   useEffect(() => {
@@ -32,65 +32,47 @@ function Showall() {
     <div
       style={{
         backgroundColor: "rgb(0,22,22)",
-        padding: "100px 125px",
+        padding: "5% 8%",
       }}
-      className="d-flex"
     >
       <Container>
-        <div className="row">
-          <div className="flex-column col-8">
-            <Row className="ms-3">
-              <DropdownButton variant="outline-warning" title="Genre">
-                <DropdownItem onClick={() => handleGenreSelect("Default")}>
-                  All
+        <Row className="ms-3 mb-3 d-flex">
+          <div className="d-flex">
+            <p className="text-light" style={{ fontSize: "23px" }}>
+              Select Genre:{" "}
+            </p>
+            <DropdownButton variant="outline-warning" title={selectedGenre}>
+              <DropdownItem onClick={() => handleGenreSelect("All")}>
+                All
+              </DropdownItem>
+              {allGenre.map((val) => (
+                <DropdownItem
+                  key={val.Genre}
+                  onClick={() => handleGenreSelect(val.Genre)}
+                >
+                  {val.Genre}
                 </DropdownItem>
-                {allGenre.map((val) => (
-                  <DropdownItem
-                    key={val.Genre}
-                    onClick={() => handleGenreSelect(val.Genre)}
-                  >
-                    {val.Genre}
-                  </DropdownItem>
-                ))}
-              </DropdownButton>
-            </Row>
+              ))}
+            </DropdownButton>
 
-            <Row className="mt-4 mb-4 ms-3">
-              <DropdownButton variant="outline-warning" title="Sort">
+            <div className="ms-3 d-flex">
+              <p className="text-light" style={{ fontSize: "23px" }}>
+                Sort by:
+              </p>
+              <DropdownButton variant="outline-warning" title={selectedSort}>
                 <DropdownItem onClick={() => handleSortSelect("Default")}>
                   Default
                 </DropdownItem>
-                <DropdownItem
-                  onClick={() => handleSortSelect("sortByNewestYear")}
-                >
+                <DropdownItem onClick={() => handleSortSelect("Newest")}>
                   Newest
                 </DropdownItem>
-                <DropdownItem
-                  onClick={() => handleSortSelect("sortByOldestYear")}
-                >
+                <DropdownItem onClick={() => handleSortSelect("Oldest")}>
                   Oldest
                 </DropdownItem>
               </DropdownButton>
-            </Row>
+            </div>
           </div>
-          <div className="flex-column col-4 showed-select">
-            {selectedGenre === "Default" ? (
-              <p></p>
-            ) : (
-              <h2 className="genre-text">{selectedGenre}</h2>
-            )}
-
-            {selectedSort === "Default" ? (
-              <p></p>
-            ) : selectedSort === "sortByNewestYear" ? (
-              <h3 className="sort-text">Newest movie</h3>
-            ) : selectedSort === "sortByOldestYear" ? (
-              <h3 className="sort-text">Oldest movie</h3>
-            ) : (
-              <h3 className="sort-text">{selectedSort}</h3>
-            )}
-          </div>
-        </div>
+        </Row>
 
         <MovieCard
           col={4}
