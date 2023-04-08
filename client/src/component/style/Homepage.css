@@ -1,8 +1,27 @@
 .vignette {
-
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   box-shadow: 50px 130px 600px rgba(0, 0, 0, 1) inset;
+}
+
+.landingPage {
+  background-image: url("https://res.cloudinary.com/drn8zqbqe/image/upload/v1680773820/shutterstock_2141337051_vx8cut.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  padding: 5%;
+}
+
+.page-bg {
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  padding-left: 9%;
+  padding-right: 9%;
 }
