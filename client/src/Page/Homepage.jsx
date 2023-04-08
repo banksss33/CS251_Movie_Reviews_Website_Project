@@ -28,18 +28,7 @@ function Hub() {
 
   return (
     <>
-      <div
-        className="vignette border-bottom border-warning "
-        style={{
-          backgroundImage: `url("https://res.cloudinary.com/drn8zqbqe/image/upload/v1680773820/shutterstock_2141337051_vx8cut.jpg")`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          width: "100%",
-          height: "100vh",
-          padding: "5%",
-        }}
-      >
+      <div className="landingPage vignette border-bottom border-warning ">
         <Container
           className="d-flex flex-column justify-content-center align-items-center rounded"
           style={{ width: "100%", height: "100%" }}
@@ -65,7 +54,7 @@ function Hub() {
             >
               with PopcornMeter
             </animated.div>
-            
+
             <animated.div
               style={{
                 fontSize: "40px",
@@ -92,25 +81,69 @@ function Hub() {
         </Container>
       </div>
 
-      <div
-        style={{
-          backgroundImage: `url("https://res.cloudinary.com/drn8zqbqe/image/upload/v1680782769/Shutterstock_769937509_1_kkdsii.jpg")`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          width: "100%",
-          height: "100vh",
-          paddingLeft: "9%",
-          paddingRight: "9%",
-        }}
-      >
+      <div className="page-bg">
         <Container
+          className="border-lg border-warning"
           style={{
-            backgroundColor: "#708090",
             width: "100%",
             height: "100%",
-            opacity: "0.99",
           }}
-        ></Container>
+        >
+          <span
+            className="d-block p-2 text-white"
+            style={{
+              position: "absolute",
+              zIndex: "1",
+              marginLeft: "2.5%",
+              marginTop: "2.5%",
+            }}
+          >
+            <strong>NEW</strong>
+          </span>
+          <ShowCarousel showFrom="ctList" label="New" />
+        </Container>
+
+        <Container
+          className="border-lg border-warning"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <span
+            className="d-block p-2 text-white"
+            style={{
+              position: "absolute",
+              zIndex: "1",
+              marginLeft: "2.5%",
+              marginTop: "2.5%",
+            }}
+          >
+            <strong>POPULAR</strong>
+          </span>
+          <ShowCarousel showFrom="ctList" label="New" />
+        </Container>
+
+        <Container
+          className="border-lg border-warning"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <span
+            className="d-block p-2 text-white"
+            style={{
+              position: "absolute",
+              zIndex: "1",
+              marginLeft: "2.5%",
+              marginTop: "2.5%",
+            }}
+          >
+            <strong>RANDOM</strong>
+          </span>
+          <ShowCarousel showFrom="ctList" label="New" />
+        </Container>
       </div>
     </>
   );

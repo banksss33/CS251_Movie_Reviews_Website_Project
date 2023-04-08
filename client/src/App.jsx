@@ -46,7 +46,7 @@ function App() {
         style={{
           paddingLeft: "40px",
           paddingRight: "40px",
-          zIndex: 999,
+          zIndex: 10,
         }}
       >
         <LinkContainer to="/">
