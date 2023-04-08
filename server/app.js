@@ -95,7 +95,162 @@ app.get("/RandMovie", (req, res) => {
   });
 });
 
+
+
 // sort genres for movie page
+app.get("/Action", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Action';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Adventure", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Adventure';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Biography", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Biography';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Crime", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Crime';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Drama", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Drama';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Family", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Family';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Fantasy", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Fantasy';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/History", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'History';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Mystery", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Mystery';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Romance", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Romance';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Sci-Fi", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Sci-Fi';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/thriller", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'thriller';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/War", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'War';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/Western", (req, res) => {
+  db.query("SELECT * FROM movie JOIN classify ON movie.MovieID = classify.MovieID JOIN genres ON genres.GenreID = classify.GenreID WHERE genres.genre = 'Western';",
+  (err, result) => {
+    if (err) {
+      console.log(err + "sort genre list error");
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 
 // sorting for movie page
