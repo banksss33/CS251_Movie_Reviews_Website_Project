@@ -1,4 +1,4 @@
-import { Col, Container, DropdownButton, Row } from "react-bootstrap";
+import { Container, DropdownButton, Row } from "react-bootstrap";
 import MovieCard from "../component/componentFile/MovieCard";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { useState, useEffect } from "react";
