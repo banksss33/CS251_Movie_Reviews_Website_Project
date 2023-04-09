@@ -37,6 +37,7 @@
 }
 
 .dropdownSearch-row {
+  display: none;
   cursor: pointer;
   text-align: start;
 }
