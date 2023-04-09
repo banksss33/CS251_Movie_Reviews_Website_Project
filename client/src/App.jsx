@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -17,7 +17,21 @@ import NotFound from "./Page/NotFound";
 function App() {
   const [movieList, setmovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isShow, setIsShow] = useState(true);
   const onchange = (event) => setSearchTerm(event.target.value);
+  const searchRef = useRef();
+  const handleClickOutside = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setIsShow(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const getmovie = () => {
@@ -53,63 +67,67 @@ function App() {
             >
               <box-icon name="search" />
             </InputGroup.Text>
+            <div ref={searchRef}>
+              <Form.Control
+                id="searchmovie"
+                aria-label="Text input with dropdown button"
+                type="text"
+                value={searchTerm}
+                placeholder="Search"
+                onChange={onchange}
+                onClick={() => setIsShow(true)}
+                style={{
+                  backgroundColor: "transparent",
+                  border: "none",
+                  width: "500px",
+                }}
+                className="shadow text-light"
+              />
+              {/* Data results */}
+              <Container className="dropdownSearch">
+                {/* filter for search */}
+                <div style={{ display: isShow ? "block" : "none" }}>
+                  {movieList
+                    .filter((val) => {
+                      const search = searchTerm.toLowerCase();
+                      const name = val.Title.toLowerCase();
 
-            <Form.Control
-              id="searchmovie"
-              aria-label="Text input with dropdown button"
-              type="text"
-              value={searchTerm}
-              placeholder="Search"
-              onChange={onchange}
-              style={{
-                backgroundColor: "transparent",
-                border: "none",
-                width: "500px",
-              }}
-              className="shadow text-light"
-            />
-            {/* Data results */}
-            <Container className="dropdownSearch">
-              {/* filter for search */}
-              {movieList
-                .filter((val) => {
-                  const search = searchTerm.toLowerCase();
-                  const name = val.Title.toLowerCase();
-
-                  return search && name.startsWith(search);
-                })
-                .map((val, key) => {
-                  // to show all the movie title
-                  return (
-                    <Link
-                      style={{ textDecoration: "none" }}
-                      to={`/Moviepage/${val.MovieID}`}
-                      onClick={() => {
-                        setSearchTerm("");
-                      }}
-                    >
-                      <Row key={key} className="rowSearch border-bottom">
-                        <Col className="d-flex">
-                          <img
-                            style={{
-                              paddingTop: "0.5%",
-                              paddingBottom: "0.5%",
-                              width: "75px",
-                              height: "100%",
-                              minHeight: "105px",
-                            }}
-                            src={val.ImageLink}
-                          />
-                          <div className="clickSearch">
-                            <strong>{val.Title}</strong>
-                            <p>{val.Year}</p>
-                          </div>
-                        </Col>
-                      </Row>
-                    </Link>
-                  );
-                })}
-            </Container>
+                      return search && name.startsWith(search);
+                    })
+                    .map((val, key) => {
+                      // to show all the movie title
+                      return (
+                        <Link
+                          style={{ textDecoration: "none" }}
+                          to={`/Moviepage/${val.MovieID}`}
+                          onClick={() => {
+                            setSearchTerm("");
+                          }}
+                        >
+                          <Row key={key} className="rowSearch border-bottom">
+                            <Col className="d-flex">
+                              <img
+                                style={{
+                                  paddingTop: "0.5%",
+                                  paddingBottom: "0.5%",
+                                  width: "75px",
+                                  height: "100%",
+                                  minHeight: "105px",
+                                }}
+                                src={val.ImageLink}
+                              />
+                              <div className="clickSearch">
+                                <strong>{val.Title}</strong>
+                                <p>{val.Year}</p>
+                              </div>
+                            </Col>
+                          </Row>
+                        </Link>
+                      );
+                    })}
+                </div>
+              </Container>
+            </div>
           </InputGroup>
 
           <LinkContainer to="/WatchList">
