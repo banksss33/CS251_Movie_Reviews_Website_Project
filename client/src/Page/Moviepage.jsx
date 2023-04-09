@@ -29,7 +29,7 @@ function Moviepage() {
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/Moviepage").then((response) => {
+      axios.get("http://localhost:3001/getMovie").then((response) => {
         setmovieList(response.data);
       });
     };

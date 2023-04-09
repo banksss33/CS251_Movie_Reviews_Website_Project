@@ -61,7 +61,7 @@ function SignIn() {
     }
   };
 
-  // Valid Nickname
+  // Valid username
   const [usernameMessage, setUsernameMessage] = useState("");
 
   const validateUsername = (event) => {

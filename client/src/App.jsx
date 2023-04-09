@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     const getmovie = () => {
-      axios.get("http://localhost:3001/Moviepage").then((response) => {
+      axios.get("http://localhost:3001/search").then((response) => {
         setmovieList(response.data);
       });
     };
