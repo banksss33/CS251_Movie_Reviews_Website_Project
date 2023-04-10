@@ -13,11 +13,14 @@ import Moviepage from "./Page/Moviepage";
 import "../src/component/style/SearchBar.css";
 import { Col, Container, Row } from "react-bootstrap";
 import NotFound from "./Page/NotFound";
+import Stars from "./component/componentFile/Stars";
 
 function App() {
   const [movieList, setmovieList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [averageScoreList, setAverageScoreList] = useState([]);
+
   const onchange = (event) => setSearchTerm(event.target.value);
   const searchRef = useRef();
   const handleClickOutside = (event) => {
@@ -39,8 +42,15 @@ function App() {
         setmovieList(response.data);
       });
     };
+    
+    const getAverageScore = () => {
+      axios.get("http://localhost:3001/averageScore").then((response) => {
+        setAverageScoreList(response.data);
+      });     
+    };
 
     getmovie();
+    getAverageScore();
   }, []);
 
   return (
@@ -119,6 +129,13 @@ function App() {
                               <div className="clickSearch">
                                 <strong>{val.Title}</strong>
                                 <p>{val.Year}</p>
+                                {averageScoreList.map((avg) => {
+                                  if(avg.MovieID === val.MovieID) {
+                                    return (
+                                      <Stars stars={avg.average_score}/>
+                                    )
+                                  }
+                                })}
                               </div>
                             </Col>
                           </Row>

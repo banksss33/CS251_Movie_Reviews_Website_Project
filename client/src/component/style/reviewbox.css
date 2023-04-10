@@ -53,3 +53,39 @@
   h3 {
     margin-top: 20px;
   }
+
+  .icon-star {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+  }
+
+  .icon-popcorn {
+    font-size: 45px;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .setScore {
+    width: 225px;
+  }
+  .setScore .rangefront {
+    position: relative;
+  }
+  
+  .setScore .starback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }

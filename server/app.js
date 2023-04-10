@@ -16,13 +16,33 @@ const db = mysql.createConnection({
 
 // IN navbar
 
-// seacrh bar
+// search bar
 // maybe delte SELECT column MovieID in later
 app.get("/search", (req, res) => {
   db.query(
     `
     SELECT MovieID, Title, ImageLink, Year 
     FROM movie
+    `,
+    (err, result) => {
+      if (err) {
+        console.log(err + "select movie error");
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+// search bar
+app.get("/averageScore", (req, res) => {
+  db.query(
+    `
+    SELECT movie.MovieID, AVG(Score) AS average_score, COUNT(Score) AS score_count
+    FROM review
+    JOIN movie ON movie.MovieID = review.MovieID
+    GROUP BY movie.MovieID;
+
     `,
     (err, result) => {
       if (err) {
@@ -46,14 +66,15 @@ app.get("/ctList", (req, res) => {
     SELECT * 
     FROM movie 
     LIMIT 3
-    `, 
+    `,
     (err, result) => {
-    if (err) {
-      console.log(err + "select movie error");
-    } else {
-      res.send(result);
+      if (err) {
+        console.log(err + "select movie error");
+      } else {
+        res.send(result);
+      }
     }
-  });
+  );
 });
 
 // select the newest movie for carousel
@@ -102,13 +123,15 @@ app.get("/PopularMovie", (req, res) => {
   db.query(
     `
     // cuminng soon
-    `, (err, result) => {
-    if (err) {
-      console.log(err + "select pop movie error");
-    } else {
-      res.send(result);
+    `,
+    (err, result) => {
+      if (err) {
+        console.log(err + "select pop movie error");
+      } else {
+        res.send(result);
+      }
     }
-  });
+  );
 });
 
 // ----------------------------------------------------------------------------------------------------
@@ -222,7 +245,7 @@ app.get("/registerValid", (req, res) => {
 app.get("/signIn", (req, res) => {
   db.query(
     `
-    SELECT username, password 
+    SELECT Nickname, username, password 
     FROM profile 
     JOIN account ON account.UserID = profile.UserID;
     `,
