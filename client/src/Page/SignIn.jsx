@@ -7,9 +7,16 @@ import { Link, redirect } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
 function SignIn() {
+  // Register
   const [regValid, setRegValid] = useState([]);
-
   const [showNickname, setShowNickname] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const showName = () => {
@@ -38,6 +45,7 @@ function SignIn() {
 
   const validateEmail = (event) => {
     const enteredEmail = event.target.value;
+    setEmail(enteredEmail);
     const isEmailUsed = regValid.some((val) => val.Email === enteredEmail);
     if (isEmailUsed) {
       setEmailMessage("This Email already used");
@@ -51,6 +59,7 @@ function SignIn() {
 
   const validateNiackname = (event) => {
     const enteredNickName = event.target.value;
+    setNickname(enteredNickName);
     const isNickNameUsed = regValid.some(
       (val) => val.Nickname === enteredNickName
     );
@@ -66,6 +75,7 @@ function SignIn() {
 
   const validateUsername = (event) => {
     const enteredUsername = event.target.value;
+    setUsername = event.target.value;
     const isUsernameUsed = regValid.some(
       (val) => val.Username === enteredUsername
     );
@@ -88,16 +98,12 @@ function SignIn() {
   };
 
   // login
-
   const [signInValid, setSignInValid] = useState([]);
-
   const [usernameS, setUsernameS] = useState("");
   const [passwordS, setPasswordS] = useState("");
-
   const onchangeUsername = (event) => {
     setUsernameS(event.target.value);
   };
-
   const onchangePassword = (event) => {
     setPasswordS(event.target.value);
   };
@@ -116,11 +122,28 @@ function SignIn() {
     }
   };
 
-
   // Sign out
   const signOut = () => {
     localStorage.setItem("yourName", "");
-  }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Call registration API with form data
+      const response = await axios.post("http://localhost:3001/Register", {
+        account: { username, password },
+        profile: { email, firstname, lastname, nickname },
+      });
+
+      // Handle successful registration
+      console.log(response.data);
+    } catch (error) {
+      // Handle registration error
+      console.log(error.response.data);
+      setError("Error registering user!");
+    }
+  };
 
   return (
     <div>
@@ -203,7 +226,7 @@ function SignIn() {
                 isRegisterActive ? "active" : ""
               }`}
             >
-              <form action="#">
+              <form onSubmit={handleSubmit}>
                 <h2>Register</h2>
 
                 <div className="input-box">
@@ -211,6 +234,7 @@ function SignIn() {
                     id="email"
                     type="email"
                     required
+                    value={email}
                     onChange={validateEmail}
                   />
                   <label>Email</label>
@@ -218,12 +242,24 @@ function SignIn() {
                 </div>
 
                 <div className="input-box">
-                  <input id="fname" type="text" required />
+                  <input
+                    id="fname"
+                    type="text"
+                    required
+                    value={firstname}
+                    onChange={(e) => setFirstname(e.target.value)}
+                  />
                   <label>first name</label>
                 </div>
 
                 <div className="input-box">
-                  <input id="lname" type="text" required />
+                  <input
+                    id="lname"
+                    type="text"
+                    required
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                  />
                   <label>last name</label>
                 </div>
 
@@ -232,6 +268,7 @@ function SignIn() {
                     id="nickname"
                     type="text"
                     required
+                    value={nickname}
                     onChange={validateNiackname}
                   />
                   <label>nick name</label>
@@ -243,14 +280,22 @@ function SignIn() {
                     id="username"
                     type="text"
                     required
-                    onChange={validateUsername}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                   <label>username</label>
                   <p>{usernameMessage}</p>
                 </div>
 
                 <div className="input-box">
-                  <input id="password" type="password" required />
+                  <input
+                    id="password"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+
                   <label>password</label>
                 </div>
 
@@ -275,16 +320,13 @@ function SignIn() {
           </div>
         ) : (
           <div className="logreg-box">
-            
             <div className="form-box flex-column">
-            <div style={{padding: "50px"}}>
-              <h2>
-                Sign Out
-              </h2>
-            </div>
-            <LinkContainer to="/" className="btnS w-60" onClick={signOut}>
-            <Link className="signOutText">Sign out</Link>
-            </LinkContainer>
+              <div style={{ padding: "50px" }}>
+                <h2>Sign Out</h2>
+              </div>
+              <LinkContainer to="/" className="btnS w-60" onClick={signOut}>
+                <Link className="signOutText">Sign out</Link>
+              </LinkContainer>
             </div>
           </div>
         )}
