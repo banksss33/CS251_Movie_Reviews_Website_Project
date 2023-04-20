@@ -282,6 +282,34 @@ app.get("/signIn", (req, res) => {
   );
 });
 
+// register user
+app.post("/Register", async (req, res) => {
+  const username = req.body.account.username;
+  const password = req.body.account.password;
+  const email = req.body.profile.email;
+  const firstname = req.body.profile.firstname;
+  const lastname = req.body.profile.lastname;
+  const nickname = req.body.profile.nickname;
+  const saltRounds = 10;
+  const passwordHash = String(password)
+  // insert the data into the 'users' table
+  try {
+    const connection = db;
+    const account = await connection.query(
+      "INSERT INTO account (username, password) VALUES (?, ?)",
+      [username, passwordHash]
+    );
+    const profile = await connection.query(
+      "INSERT INTO profile (userID, email, firstname, lastname, nickname) VALUES (LAST_INSERT_ID(), ?, ?, ?, ?)",
+      [email, firstname, lastname, nickname]
+    );
+    res.send(`User registered successfully!`);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error registering user!");
+  }
+});
+
 // ----------------------------------------------------------------------------------------------------
 
 // IN Showall page
