@@ -2,7 +2,7 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import "../style/reviewbox.css"
 
-const Popcorn = ({ popcorn, reviews}) => {
+const Popcorn = ({ popcorn}) => {
   const ratingStar = Array.from({ length: 5 }, (elem, index) => {
     let number = index + 0.5;
 

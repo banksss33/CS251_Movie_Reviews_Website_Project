@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ReviewBox from "../component/componentFile/ReviewBox";
 import "../component/style/MoviePage.css"
+import ShowReview from "../component/componentFile/ShowReview";
 
 //import from Cloudinary
 import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
@@ -25,7 +26,6 @@ function Moviepage() {
   const [movieList, setmovieList] = useState([]);
   const [directorList, setdirectorList] = useState([]);
   const [actorList, setactorList] = useState([]);
-  const [reviewList, setreviewList] = useState([]);
 
   useEffect(() => {
     const getmovie = () => {
@@ -46,16 +46,9 @@ function Moviepage() {
       });
     };
 
-    const getreview = () => {
-      axios.get("http://localhost:3001/getReview").then((response) => {
-        setreviewList(response.data);
-      });
-    };
-
     getmovie();
     getdirector();
     getactor();
-    getreview();
   }, []);
 
   let Param = useParams();
@@ -156,51 +149,10 @@ function Moviepage() {
                   </span>
                 </Row>
 
-                <Row className="mt-5">
-                  {reviewList.map((val, key) => {
-                    // to show all the movie title
-                    if (val.MovieID === ID) {
-                      return (
-                        <div
-                          className="p-3 rounded-4"
-                          style={{
-                            background: "#679267",
-                          }}
-                        >
-                          <Row>
-                            <div className="col-sm-8 ps-5">
-                              <h5>{val.Nickname}</h5>
-                              <p>{val.Date}</p>
-                            </div>
+                {/* Review box */}
+                <ShowReview showFrom="getReview"/>
 
-                            <div
-                              className="col-sm-4"
-                              style={{
-                                display: "flex",
-                                justifyContent: "right",
-                              }}
-                            >
-                              <p className="p-3">{val.Score}</p>
-                              <img className="p-3" src="#" alt="popcorn" />
-                            </div>
-                          </Row>
-                          <hr />
-                          <Row>
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                minHeight: "100px",
-                              }}
-                            >
-                              <p>{val.review}</p>
-                            </div>
-                          </Row>
-                        </div>
-                      );
-                    }
-                  })}
-                </Row>
+                {/* rating your own */}
                 {localStorage.getItem("yourName") === "" ? (
                   <div
                     className="p-3 rounded-4 mt-5"
@@ -211,7 +163,7 @@ function Moviepage() {
                     <h3>Only member can Rate Score</h3>
                   </div>
                 ) : (
-                  <ReviewBox/>
+                  <ReviewBox movieID={ID}/>
                 )}
               </Container>
             );

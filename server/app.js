@@ -217,6 +217,29 @@ app.get("/getReview", (req, res) => {
   );
 });
 
+
+// send review
+app.post("/rateMovie", (req, res) => {
+  const mid = req.body.mid;
+  const nickName = req.body.nickName;
+  const Score = req.body.Score;
+  const review = req.body.comment;
+  db.query(
+    `
+    INSERT INTO review (MovieID, UserID, Score, review, Date)
+    VALUES (?, (SELECT profile.UserID FROM profile WHERE profile.Nickname = ?), ?, ?, NOW());
+    `,
+    [mid, nickName, Score, review],
+    (err, result) => {
+      if (err) {
+        console.log(err + "send review rating error" + mid + nickName + Score + review);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
 // ----------------------------------------------------------------------------------------------------
 
 // IN sign in page
