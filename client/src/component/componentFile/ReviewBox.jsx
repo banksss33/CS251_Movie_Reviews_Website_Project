@@ -3,10 +3,28 @@ import React, { useEffect, useState } from "react";
 import "../style/reviewbox.css";
 import Popcorn from "./popcornRate";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const ReviewBox = ({movieID}) => {
+
+  // infor send to app.js for rating
+  const [mid, setmid] = useState(0);
+  const [nickname, setNickname] = useState("");
   const [reviewScore, setReviewScore] = useState(0);
   const [reviewBox, setReviewBox] = useState("");
+
+  useEffect(() => {
+    const getmid = () => {
+      setmid(movieID);
+    };
+
+    const getNickname = () => {
+      setNickname(localStorage.getItem("yourName"));
+    };    
+
+    getmid();
+    getNickname();
+  }, []);
 
   const handleReviewComment = (event) => {
     setReviewBox(event.target.value);
@@ -15,26 +33,47 @@ const ReviewBox = ({movieID}) => {
   const handleRangeChange = (event) => {
     setReviewScore(event.target.value);
   };
+
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
+  const successReviewAlert = () => {
+    Swal.fire({
+      title: 'Successfully',
+      text: 'Thank you for your rating',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleRefresh();
+      }
+    });
+  };
   
-  const sendReview = () => {
-    axios
-      .post(`http://localhost:3001/rateMovie`, {
-        params: {
-          mid: movieID,
-          nickName: localStorage.getItem("yourName"),
-          Score: reviewScore,
-          comment: reviewBox,
-        },
-      })
-      .then((response) => {
-        console.log("send data:", response.data);
+
+  const sendReview  = async (e) => {
+    e.preventDefault();
+    try {
+      // Call rating API with form data
+      const response = await axios.post("http://localhost:3001/rateMovie", {
+        sending: { mid, nickname, reviewScore, reviewBox },
       });
+
+      // Handle successful rating
+      console.log(response.data);
+      successReviewAlert();
+    } catch (error) {
+      // Handle rating error
+      console.log(error.response.data);
+    }
   };
 
   return (
       
     <div>
-      {typeof movieID}
       <h3>Rate your opinion</h3>
       <div
         className="p-3 rounded-4"

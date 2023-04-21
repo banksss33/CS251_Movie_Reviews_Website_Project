@@ -217,13 +217,12 @@ app.get("/getReview", (req, res) => {
   );
 });
 
-
 // send review
 app.post("/rateMovie", (req, res) => {
-  const mid = req.body.mid;
-  const nickName = req.body.nickName;
-  const Score = req.body.Score;
-  const review = req.body.comment;
+  const mid = req.body.sending.mid;
+  const nickName = req.body.sending.nickname;
+  const Score = req.body.sending.reviewScore;
+  const review = req.body.sending.reviewBox;
   db.query(
     `
     INSERT INTO review (MovieID, UserID, Score, review, Date)
