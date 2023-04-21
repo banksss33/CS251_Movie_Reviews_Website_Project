@@ -20,6 +20,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isShow, setIsShow] = useState(true);
   const [averageScoreList, setAverageScoreList] = useState([]);
+  const [showNickname, setShowNickname] = useState("");
 
   const onchange = (event) => setSearchTerm(event.target.value);
   const searchRef = useRef();
@@ -49,9 +50,14 @@ function App() {
       });     
     };
 
+    const showName = () => {
+      setShowNickname(localStorage.getItem("yourName"));
+    };
+
     getmovie();
     getAverageScore();
-  }, []);
+    showName();
+  }, [localStorage.getItem("yourName")]);
 
   return (
     <BrowserRouter>
@@ -152,7 +158,11 @@ function App() {
           </LinkContainer>
 
           <LinkContainer to="/SignIn">
-            <Nav.Link>SignIn</Nav.Link>
+            <Nav.Link>{localStorage.getItem("yourName") === "" ? (
+                <>SignIn</>
+              ) : (
+                <>{showNickname}</>
+              )}</Nav.Link>
           </LinkContainer>
         </Nav>
       </Navbar>

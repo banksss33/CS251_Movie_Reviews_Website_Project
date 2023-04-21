@@ -117,14 +117,23 @@ function SignIn() {
         (val) => val.username === usernameS
       );
       localStorage.setItem("yourName", loggedInUser.Nickname);
+      console.log("Login successful")
     } else {
       localStorage.setItem("yourName", "");
+      console.log("mismatch account or password")
     }
+
+    handleRefresh();
   };
+
+    const handleRefresh = () => {
+      window.location.reload();
+    };
 
   // Sign out
   const signOut = () => {
     localStorage.setItem("yourName", "");
+    handleRefresh();
   };
 
   const handleSubmit = async (e) => {
@@ -299,7 +308,7 @@ function SignIn() {
                   <label>password</label>
                 </div>
 
-                <button type="submit" className="btnS">
+                <button type="submit" className="btnS" onClick={handleRefresh}>
                   Sign Up
                 </button>
 
