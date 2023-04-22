@@ -122,7 +122,12 @@ app.get("/RandMovie", (req, res) => {
 app.get("/PopularMovie", (req, res) => {
   db.query(
     `
-    // cuminng soon
+    SELECT m.MovieID, m.Title, m.Description, m.VideoLink
+    FROM movie m
+    LEFT JOIN review r ON m.MovieID = r.MovieID
+    GROUP BY m.MovieID
+    ORDER BY AVG(r.Score) DESC
+    LIMIT 3;
     `,
     (err, result) => {
       if (err) {

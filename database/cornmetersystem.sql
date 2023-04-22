@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2023 at 10:48 AM
+-- Generation Time: Apr 22, 2023 at 10:55 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,7 +40,11 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`UserID`, `username`, `password`) VALUES
 (2, '6409682777', '1909802697311'),
 (3, '123456789', '051145'),
-(4, '6409610570', '666666m');
+(4, '6409610570', '666666m'),
+(5, 'test01', '123456789'),
+(6, 'test02', '123456789'),
+(7, 'test03', '123456789'),
+(8, 'test04', '123456789');
 
 -- --------------------------------------------------------
 
@@ -132,7 +136,10 @@ INSERT INTO `actor` (`ActorID`, `ActorName`, `ActorImageLink`) VALUES
 (71, 'Liam Hemsworth', 'https://th.bing.com/th/id/R.f2cbfd698a387b9132c2fa6f2e4412c7?rik=r7RnzguxGm00RQ&pid=ImgRaw&r=0'),
 (72, 'Dylan O\'Brien', 'https://th.bing.com/th/id/R.e90623465095f11e748f41f1e5c0f6be?rik=FzCzigTxajkEQQ&pid=ImgRaw&r=0'),
 (73, 'Kaya Scodelario', 'https://th.bing.com/th/id/R.7a44ef4c8d6c77347a47d2c6a05a292e?rik=ZA2Ch7Xznfze7g&pid=ImgRaw&r=0'),
-(74, 'Will Poulter', 'https://th.bing.com/th/id/R.a08091e88c0034b0d3ab1960a8a2773e?rik=X30TvyFagRMLjg&pid=ImgRaw&r=0');
+(74, 'Will Poulter', 'https://th.bing.com/th/id/R.a08091e88c0034b0d3ab1960a8a2773e?rik=X30TvyFagRMLjg&pid=ImgRaw&r=0'),
+(75, 'Kaya Kiyohara', 'https://i.mydramalist.com/2BDrO_5_c.jpg'),
+(76, 'Taishi Nakagawa', 'https://th.bing.com/th/id/OIP.qk_k3nbZ1UUYodiuResqYgAAAA?pid=ImgDet&rs=1'),
+(77, '', '');
 
 -- --------------------------------------------------------
 
@@ -233,7 +240,9 @@ INSERT INTO `cast` (`MovieID`, `ActorID`) VALUES
 (27, 65),
 (28, 72),
 (28, 73),
-(28, 74);
+(28, 74),
+(29, 75),
+(29, 76);
 
 -- --------------------------------------------------------
 
@@ -290,7 +299,7 @@ INSERT INTO `classify` (`MovieID`, `GenreID`) VALUES
 (16, 3),
 (16, 6),
 (17, 3),
-(17, 3),
+(17, 6),
 (18, 3),
 (18, 6),
 (18, 9),
@@ -315,7 +324,10 @@ INSERT INTO `classify` (`MovieID`, `GenreID`) VALUES
 (27, 2),
 (28, 3),
 (28, 10),
-(28, 12);
+(28, 12),
+(29, 1),
+(29, 8),
+(29, 15);
 
 -- --------------------------------------------------------
 
@@ -361,7 +373,8 @@ INSERT INTO `directed` (`MovieID`, `DirectorID`) VALUES
 (25, 20),
 (26, 7),
 (27, 21),
-(27, 22);
+(27, 22),
+(29, 23);
 
 -- --------------------------------------------------------
 
@@ -400,7 +413,8 @@ INSERT INTO `director` (`DirectorID`, `DirectorName`) VALUES
 (19, 'Frank Capra'),
 (20, 'Jonathan Demme'),
 (21, 'Fernando Meirelles'),
-(22, 'Kátia Lund');
+(22, 'Kátia Lund'),
+(23, 'Kôtarô Tamura');
 
 -- --------------------------------------------------------
 
@@ -431,7 +445,8 @@ INSERT INTO `genres` (`GenreID`, `Genre`) VALUES
 (11, 'Family'),
 (12, 'Mystery'),
 (13, 'thriller'),
-(14, 'War');
+(14, 'War'),
+(15, 'Animation');
 
 -- --------------------------------------------------------
 
@@ -445,7 +460,6 @@ CREATE TABLE `movie` (
   `Title` text NOT NULL,
   `Description` text NOT NULL,
   `ImageLink` text NOT NULL,
-  `ImageLinkSleep` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `VideoLink` text NOT NULL,
   `Rate` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -454,35 +468,36 @@ CREATE TABLE `movie` (
 -- Dumping data for table `movie`
 --
 
-INSERT INTO `movie` (`MovieID`, `Year`, `Title`, `Description`, `ImageLink`, `ImageLinkSleep`, `VideoLink`, `Rate`) VALUES
-(1, 2014, 'Interstellar', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.', 'https://files.gqthailand.com/uploads/interstellar2.jpg', '', 'https://www.youtube.com/watch?v=z-LXHh6cj2Q', 'PG13'),
-(2, 2022, 'Doctor Strange in the Multiverse of Madness', 'Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.', 'https://sportshub.cbsistatic.com/i/2022/02/13/1b917e47-3a41-415a-b3f5-4f855dc0caad/doctor-strange-in-the-multiverse-of-madness-trailer-poster.jpg?auto=webp&width=810&height=1200&crop=0.675:1,smart', '', 'https://www.youtube.com/watch?v=cw1A7B7t7aA', 'PG-13'),
-(3, 2012, 'The Hunger Games', 'Katniss Everdeen voluntarily takes her younger sister\'s place in the Hunger Games: a televised competition in which two teenagers from each of the twelve Districts of Panem are chosen at random to fight to the death.', 'https://th.bing.com/th/id/R.b2d400c3416c67e91c5da2cc9518084b?rik=KR8qxejDuh9VwQ&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fthe-hunger-games-mockingjay-part-1-final-poster.jpg&ehk=zmdOGXD58qe3jXoTbm3hQUwdAt4ll4HkjKV3dXlU4gs%3d&risl=&pid=Img', '', 'https://www.youtube.com/watch?v=mfmrPu43DF8', 'PG13'),
-(4, 1994, 'The Shawshank Redemption', 'Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.', 'https://www.cultura.id/wp-content/uploads/2019/09/the-shawshank-redemption_review.jpg', '', '', 'R'),
-(5, 1972, 'The Godfather', 'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.', 'https://th.bing.com/th/id/OIP.EZncYnNoDxdf2bBsnDbQigAAAA?pid=ImgDet&rs=1', '', '', 'R'),
-(6, 2008, 'The Dark Knight', 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.', 'https://image.tmdb.org/t/p/original/pKKvCaL1TPTVtbI6EeliyND3api.jpg', '', '', 'PG13'),
-(7, 1974, 'The Godfather Part II', 'The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.', 'https://th.bing.com/th/id/OIP.UdW59NeOKjMFUlsD5F9xUQHaJ9?pid=ImgDet&rs=1', '', '', 'R'),
-(8, 1957, '12 Angry Men', 'The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.', 'https://th.bing.com/th/id/OIP.AIFNSFETGeQgAeWbKN0jiwHaLH?pid=ImgDet&rs=1', '', '', 'Approved'),
-(9, 1993, 'Schindler\'s List', 'In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.', 'https://th.bing.com/th/id/R.5b0fef44796aa575f3a2be5f49a7dded?rik=1iVVhmppopopbg&pid=ImgRaw&r=0', '', '', 'R'),
-(10, 2003, 'The Lord of the Rings: The Return of the King', 'Gandalf and Aragorn lead the World of Men against Sauron\'s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.\r\n', 'https://th.bing.com/th/id/R.ce810d8caedf8b2944874bc68794891c?rik=ANfI3u0RxHoenQ&pid=ImgRaw&r=0', '', '', 'PG13'),
-(11, 2001, 'The Lord of the Rings: The Fellowship of the Ring', 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.\r\n', 'https://th.bing.com/th/id/R.15efb377ba5dee52a7c1d05ab80dbc51?rik=6A0yhxCGb86f3A&pid=ImgRaw&r=0', '', '', 'PG13'),
-(12, 1994, 'Pulp Fiction', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.\r\n', 'https://www.themoviedb.org/t/p/original/pbWgQPC6l9pkpEpi3WNRSfWYNP6.jpg', '', '', 'R'),
-(13, 1966, 'The Good, the Bad and the Ugly', 'A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.\r\n', 'https://th.bing.com/th/id/OIP.4UJ6Gc3S4iBSTJPdmxQjFAHaKc?pid=ImgDet&rs=1', '', '', 'Approved'),
-(14, 1994, 'Forrest Gump', 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.', 'https://th.bing.com/th/id/R.806cb233722d9687fdf4b57b1e0b18a6?rik=U8vUGoUF1SGmWA&pid=ImgRaw&r=0', '', '', 'PG13'),
-(15, 1999, 'Fight Club', 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.', 'https://th.bing.com/th/id/R.8f9c63a79386e42a75c4e8044a8b787c?rik=JQlP%2bW4JsVqljQ&pid=ImgRaw&r=0', '', '', 'R'),
-(16, 2002, 'The Lord of the Rings: The Two Towers', 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron\'s new ally, Saruman, and his hordes of Isengard.', 'https://th.bing.com/th/id/R.b545190f5ee9a7e319ae24527b2bb6e1?rik=72ExtGDL5qRlUA&pid=ImgRaw&r=0', '', '', 'PG13'),
-(17, 2010, 'Inception', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.\r\n', 'https://th.bing.com/th/id/R.b1a2c53f7f3cfc84e7cdf870d26deb70?rik=eW5Mb4YdBp6ZCQ&pid=ImgRaw&r=0', '', '', 'PG13'),
-(18, 1980, 'Star Wars: Episode V - The Empire Strikes Back', 'After the Rebels are overpowered by the Empire, Luke Skywalker begins his Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.\r\n', 'https://starwarslatinamerica.com/wp-content/gallery/star-wars-episode-v-the-empire-strikes-back-remastered-2015-digital/000.jpg', '', '', 'PG'),
-(19, 1999, 'The Matrix', 'When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.\r\n', 'https://www.themoviedb.org/t/p/original/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg', '', '', 'R'),
-(20, 1990, 'Goodfellas', 'The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.\r\n', 'https://www.themoviedb.org/t/p/original/nJjqs7emf9bR2I5H6rBSBJHxDGx.jpg', '', '', 'R'),
-(21, 1975, 'One Flew Over the Cuckoo\'s Nest', 'In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse.\r\n', 'https://th.bing.com/th/id/R.2d46fbb0d293776f039a2cfac14058bc?rik=REcH%2brQ5FMFDJw&pid=ImgRaw&r=0', '', '', 'R'),
-(22, 1995, 'Se7en', 'Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.', 'https://www.themoviedb.org/t/p/original/fEqMJXan5WrE5l7QlPeNIDfGX0W.jpg', '', '', 'R'),
-(23, 1954, 'Seven Samurai', 'Farmers from a village exploited by bandits hire a veteran samurai for protection, who gathers six other samurai to join him.\r\n', 'https://th.bing.com/th/id/R.9a5fcc71b6bdbb2a7965bdb4494d6a7c?rik=E32fUQSE6BmyhA&pid=ImgRaw&r=0', '', '', 'Not Rated'),
-(24, 1946, 'It\'s a Wonderful Life', 'An angel is sent from Heaven to help a desperately frustrated businessman by showing him what life would have been like if he had never existed.', 'https://th.bing.com/th/id/OIP.VneIABDkU0rkkW0u85Bc7wHaJ4?pid=ImgDet&rs=1', '', '', 'PG'),
-(25, 1991, 'The Silence of the Lambs', 'A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.\r\n', 'https://th.bing.com/th/id/R.c9c19d3f0fa5fe7f20a3da0009db6fb3?rik=6Ol5drorWjYtvw&pid=ImgRaw&r=0', '', '', 'R'),
-(26, 1998, 'Saving Private Ryan', 'Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.\r\n', 'https://th.bing.com/th/id/R.d5a046ac7fe62908f2db9d9424ab81d5?rik=0YktzrLNvlsdow&pid=ImgRaw&r=0', '', '', 'R'),
-(27, 2002, 'City of God', 'In the slums of Rio, two kids\' paths diverge as one struggles to become a photographer and the other a kingpin.\r\n', 'https://th.bing.com/th/id/R.5e6b40f50763e4febcea0c6346b2be50?rik=IDWXLnzl%2fQq6UQ&pid=ImgRaw&r=0', '', '', 'R'),
-(28, 2014, 'The Maze Runner', 'Thomas is deposited in a community of boys after his memory is erased, soon learning they\'re all trapped in a maze that will require him to join forces with fellow \"runners\" for a shot at escape.', 'https://th.bing.com/th/id/OIP.FO88GonevOnGKbBKteXb7wHaLH?pid=ImgDet&rs=1', '', '', 'G');
+INSERT INTO `movie` (`MovieID`, `Year`, `Title`, `Description`, `ImageLink`, `VideoLink`, `Rate`) VALUES
+(1, 2014, 'Interstellar', 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.', 'https://th.bing.com/th/id/R.0e3abc76038b2489b794b60318879783?rik=tPU5ztPP31oDrg&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/zSWdZVtXT7E?controls=0&autoplay=1&mute=1&loop=1&playlist=zSWdZVtXT7E&modestbranding=1', 'PG13'),
+(2, 2022, 'Doctor Strange in the Multiverse of Madness', 'Doctor Strange teams up with a mysterious teenage girl from his dreams who can travel across multiverses, to battle multiple threats, including other-universe versions of himself, which threaten to wipe out millions across the multiverse. They seek help from Wanda the Scarlet Witch, Wong and others.', 'https://sportshub.cbsistatic.com/i/2022/02/13/1b917e47-3a41-415a-b3f5-4f855dc0caad/doctor-strange-in-the-multiverse-of-madness-trailer-poster.jpg?auto=webp&width=810&height=1200&crop=0.675:1,smart', 'https://www.youtube.com/embed/aWzlQ2N6qqg?controls=0&autoplay=1&mute=1&loop=1&playlist=aWzlQ2N6qqg&modestbranding=1', 'PG-13'),
+(3, 2012, 'The Hunger Games', 'Katniss Everdeen voluntarily takes her younger sister\'s place in the Hunger Games: a televised competition in which two teenagers from each of the twelve Districts of Panem are chosen at random to fight to the death.', 'https://th.bing.com/th/id/R.b2d400c3416c67e91c5da2cc9518084b?rik=KR8qxejDuh9VwQ&riu=http%3a%2f%2fcdn.collider.com%2fwp-content%2fuploads%2fthe-hunger-games-mockingjay-part-1-final-poster.jpg&ehk=zmdOGXD58qe3jXoTbm3hQUwdAt4ll4HkjKV3dXlU4gs%3d&risl=&pid=Img', 'https://www.youtube.com/embed/mfmrPu43DF8?controls=0&autoplay=1&mute=1&loop=1&playlist=mfmrPu43DF8&modestbranding=1', 'PG13'),
+(4, 1994, 'The Shawshank Redemption', 'Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.', 'https://th.bing.com/th/id/R.852d2f6a2c873493d13fee5843fab817?rik=RrTJMPCkAOt6tQ&riu=http%3a%2f%2fwww.reelworldtheology.com%2fwp-content%2fuploads%2f2018%2f08%2fthe-shawshank-redemption-movie-poster-29x41-in-r2000-franck-darabont-tim-robbins.jpg&ehk=NgeHxlYon0p8Yeqwf9xQ7W3FWlEVZn4vT7FR6v1V0us%3d&risl=&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/PLl99DlL6b4?controls=0&autoplay=1&mute=1&loop=1&playlist=PLl99DlL6b4&modestbranding=1', 'R'),
+(5, 1972, 'The Godfather', 'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.', 'https://th.bing.com/th/id/OIP.EZncYnNoDxdf2bBsnDbQigAAAA?pid=ImgDet&rs=1', 'https://www.youtube.com/embed/sY1S34973zA?controls=0&autoplay=1&mute=1&loop=1&playlist=sY1S34973zA&modestbranding=1', 'R'),
+(6, 2008, 'The Dark Knight', 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.', 'https://image.tmdb.org/t/p/original/pKKvCaL1TPTVtbI6EeliyND3api.jpg', 'https://www.youtube.com/embed/LDG9bisJEaI?controls=0&autoplay=1&mute=1&loop=1&playlist=LDG9bisJEaI&modestbranding=1', 'PG13'),
+(7, 1974, 'The Godfather Part II', 'The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.', 'https://th.bing.com/th/id/OIP.UdW59NeOKjMFUlsD5F9xUQHaJ9?pid=ImgDet&rs=1', 'https://www.youtube.com/embed/OA1ij0alE0w?controls=0&autoplay=1&mute=1&loop=1&playlist=OA1ij0alE0w&modestbranding=1', 'R'),
+(8, 1957, '12 Angry Men', 'The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.', 'https://th.bing.com/th/id/OIP.AIFNSFETGeQgAeWbKN0jiwHaLH?pid=ImgDet&rs=1', 'https://www.youtube.com/embed/TEN-2uTi2c0?controls=0&autoplay=1&mute=1&loop=1&playlist=TEN-2uTi2c0&modestbranding=1', 'Approved'),
+(9, 1993, 'Schindler\'s List', 'In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.', 'https://th.bing.com/th/id/R.5b0fef44796aa575f3a2be5f49a7dded?rik=1iVVhmppopopbg&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/mxphAlJID9U?controls=0&autoplay=1&mute=1&loop=1&playlist=mxphAlJID9U&modestbranding=1', 'R'),
+(10, 2003, 'The Lord of the Rings: The Return of the King', 'Gandalf and Aragorn lead the World of Men against Sauron\'s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.\r\n', 'https://th.bing.com/th/id/R.ce810d8caedf8b2944874bc68794891c?rik=ANfI3u0RxHoenQ&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/r5X-hFf6Bwo?controls=0&autoplay=1&mute=1&loop=1&playlist=r5X-hFf6Bwo&modestbranding=1', 'PG13'),
+(11, 2001, 'The Lord of the Rings: The Fellowship of the Ring', 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.\r\n', 'https://th.bing.com/th/id/R.15efb377ba5dee52a7c1d05ab80dbc51?rik=6A0yhxCGb86f3A&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/V75dMMIW2B4?controls=0&autoplay=1&mute=1&loop=1&playlist=V75dMMIW2B4&modestbranding=1', 'PG13'),
+(12, 1994, 'Pulp Fiction', 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.\r\n', 'https://www.themoviedb.org/t/p/original/pbWgQPC6l9pkpEpi3WNRSfWYNP6.jpg', 'https://www.youtube.com/embed/s7EdQ4FqbhY?controls=0&autoplay=1&mute=1&loop=1&playlist=s7EdQ4FqbhY&modestbranding=1', 'R'),
+(13, 1966, 'The Good, the Bad and the Ugly', 'A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.\r\n', 'https://th.bing.com/th/id/OIP.4UJ6Gc3S4iBSTJPdmxQjFAHaKc?pid=ImgDet&rs=1', 'https://www.youtube.com/embed/IFNUGzCOQoI?controls=0&autoplay=1&mute=1&loop=1&playlist=IFNUGzCOQoI&modestbranding=1', 'Approved'),
+(14, 1994, 'Forrest Gump', 'The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.', 'https://th.bing.com/th/id/R.806cb233722d9687fdf4b57b1e0b18a6?rik=U8vUGoUF1SGmWA&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/bLvqoHBptjg?controls=0&autoplay=1&mute=1&loop=1&playlist=bLvqoHBptjg&modestbranding=1', 'PG13'),
+(15, 1999, 'Fight Club', 'An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.', 'https://th.bing.com/th/id/R.8f9c63a79386e42a75c4e8044a8b787c?rik=JQlP%2bW4JsVqljQ&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/BdJKm16Co6M?controls=0&autoplay=1&mute=1&loop=1&playlist=BdJKm16Co6M&modestbranding=1', 'R'),
+(16, 2002, 'The Lord of the Rings: The Two Towers', 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron\'s new ally, Saruman, and his hordes of Isengard.', 'https://th.bing.com/th/id/R.b545190f5ee9a7e319ae24527b2bb6e1?rik=72ExtGDL5qRlUA&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/r5X-hFf6Bwo&t=22s?controls=0&autoplay=1&mute=1&loop=1&playlist=r5X-hFf6Bwo&t=22s&modestbranding=1', 'PG13'),
+(17, 2010, 'Inception', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.\r\n', 'https://th.bing.com/th/id/R.b1a2c53f7f3cfc84e7cdf870d26deb70?rik=eW5Mb4YdBp6ZCQ&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/Qwe6qXFTdgc?controls=0&autoplay=1&mute=1&loop=1&playlist=Qwe6qXFTdgc&modestbranding=1', 'PG13'),
+(18, 1980, 'Star Wars: Episode V - The Empire Strikes Back', 'After the Rebels are overpowered by the Empire, Luke Skywalker begins his Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.\r\n', 'https://starwarslatinamerica.com/wp-content/gallery/star-wars-episode-v-the-empire-strikes-back-remastered-2015-digital/000.jpg', 'https://www.youtube.com/embed/JNwNXF9Y6kY?controls=0&autoplay=1&mute=1&loop=1&playlist=JNwNXF9Y6kY&modestbranding=1', 'PG'),
+(19, 1999, 'The Matrix', 'When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.\r\n', 'https://www.themoviedb.org/t/p/original/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg', 'https://www.youtube.com/embed/m8e-FF8MsqU?controls=0&autoplay=1&mute=1&loop=1&playlist=m8e-FF8MsqU&modestbranding=1', 'R'),
+(20, 1990, 'Goodfellas', 'The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.\r\n', 'https://www.themoviedb.org/t/p/original/nJjqs7emf9bR2I5H6rBSBJHxDGx.jpg', 'https://www.youtube.com/embed/qo5jJpHtI1Y?controls=0&autoplay=1&mute=1&loop=1&playlist=qo5jJpHtI1Y&modestbranding=1', 'R'),
+(21, 1975, 'One Flew Over the Cuckoo\'s Nest', 'In the Fall of 1963, a Korean War veteran and criminal pleads insanity and is admitted to a mental institution, where he rallies up the scared patients against the tyrannical nurse.\r\n', 'https://th.bing.com/th/id/R.2d46fbb0d293776f039a2cfac14058bc?rik=REcH%2brQ5FMFDJw&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/_A4bCifObI4?controls=0&autoplay=1&mute=1&loop=1&playlist=_A4bCifObI4&modestbranding=1', 'R'),
+(22, 1995, 'Se7en', 'Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.', 'https://www.themoviedb.org/t/p/original/fEqMJXan5WrE5l7QlPeNIDfGX0W.jpg', 'https://www.youtube.com/embed/vr3UZ-axauU?controls=0&autoplay=1&mute=1&loop=1&playlist=vr3UZ-axauU&modestbranding=1', 'R'),
+(23, 1954, 'Seven Samurai', 'Farmers from a village exploited by bandits hire a veteran samurai for protection, who gathers six other samurai to join him.\r\n', 'https://th.bing.com/th/id/R.9a5fcc71b6bdbb2a7965bdb4494d6a7c?rik=E32fUQSE6BmyhA&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/Z1q_UjzM3cI?controls=0&autoplay=1&mute=1&loop=1&playlist=Z1q_UjzM3cI&modestbranding=1', 'Not Rated'),
+(24, 1946, 'It\'s a Wonderful Life', 'An angel is sent from Heaven to help a desperately frustrated businessman by showing him what life would have been like if he had never existed.', 'https://th.bing.com/th/id/OIP.VneIABDkU0rkkW0u85Bc7wHaJ4?pid=ImgDet&rs=1', 'https://www.youtube.com/embed/ewe4lg8zTYA?controls=0&autoplay=1&mute=1&loop=1&playlist=ewe4lg8zTYA&modestbranding=1', 'PG'),
+(25, 1991, 'The Silence of the Lambs', 'A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.\r\n', 'https://th.bing.com/th/id/R.c9c19d3f0fa5fe7f20a3da0009db6fb3?rik=6Ol5drorWjYtvw&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/gSQciiKhqXc?controls=0&autoplay=1&mute=1&loop=1&playlist=gSQciiKhqXc&modestbranding=1', 'R'),
+(26, 1998, 'Saving Private Ryan', 'Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.\r\n', 'https://th.bing.com/th/id/R.d5a046ac7fe62908f2db9d9424ab81d5?rik=0YktzrLNvlsdow&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/9CiW_DgxCnQ?controls=0&autoplay=1&mute=1&loop=1&playlist=9CiW_DgxCnQ&modestbranding=1', 'R'),
+(27, 2002, 'City of God', 'In the slums of Rio, two kids\' paths diverge as one struggles to become a photographer and the other a kingpin.\r\n', 'https://th.bing.com/th/id/R.5e6b40f50763e4febcea0c6346b2be50?rik=IDWXLnzl%2fQq6UQ&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/dcUOO4Itgmw?controls=0&autoplay=1&mute=1&loop=1&playlist=dcUOO4Itgmw&modestbranding=1', 'R'),
+(28, 2014, 'The Maze Runner', 'Thomas is deposited in a community of boys after his memory is erased, soon learning they\'re all trapped in a maze that will require him to join forces with fellow \"runners\" for a shot at escape.', 'https://th.bing.com/th/id/OIP.FO88GonevOnGKbBKteXb7wHaLH?pid=ImgDet&rs=1', 'https://www.youtube.com/embed/AwwbhhjQ9Xk?controls=0&autoplay=1&mute=1&loop=1&playlist=AwwbhhjQ9Xk&modestbranding=1', 'G'),
+(29, 2020, 'Josee, the Tiger and the Fish', 'Tsuneo is a university student and Josee is a young girl who has rarely gone out of the house by herself due to her being unable to walk. The two meet when Tsuneo finds Josee\'s grandmother taking her out for a evening walk.', 'https://th.bing.com/th/id/R.f0984b28b6f35a224c469a685cd7fcf7?rik=pDKq4cykfxyO6w&pid=ImgRaw&r=0', 'https://www.youtube.com/embed/w6IsHL91aXo?controls=0&autoplay=1&mute=1&loop=1&playlist=w6IsHL91aXo&modestbranding=1', 'G');
 
 -- --------------------------------------------------------
 
@@ -504,7 +519,11 @@ CREATE TABLE `profile` (
 
 INSERT INTO `profile` (`UserID`, `Email`, `Nickname`, `Firstname`, `Lastname`) VALUES
 (2, 'nitikorn.tha@dome.tu.ac.th', 'Heisneky', 'Nitikorn', 'Thanasutr'),
-(4, 'boss88@gmail.com', 'Apostles', 'kittipat', 'suwan');
+(4, 'boss88@gmail.com', 'Apostles', 'kittipat', 'suwan'),
+(5, 'kentnitikorn@gmail.com', 'ILoveCS251', 'heineken', 'Heisneky'),
+(6, 'Testsubject02@gmail.com', 'BigDaddy', 'testsubject', 'Delta'),
+(7, 'testsubject03@gmail.com', 'Little sister', 'test02', 'Gramma'),
+(8, 'test04@gmail.com', 'BigBoi', 'test04', 'sigma');
 
 -- --------------------------------------------------------
 
@@ -515,7 +534,7 @@ INSERT INTO `profile` (`UserID`, `Email`, `Nickname`, `Firstname`, `Lastname`) V
 CREATE TABLE `review` (
   `MovieID` int(100) NOT NULL,
   `UserID` int(10) NOT NULL,
-  `Score` int(5) NOT NULL,
+  `Score` float NOT NULL,
   `review` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -525,7 +544,16 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`MovieID`, `UserID`, `Score`, `review`, `Date`) VALUES
-(1, 2, 4, 'that pretty good', '2023-03-22');
+(1, 2, 4, 'that pretty good', '2023-03-22'),
+(26, 2, 5, 'Save that Ryan!!!!', '2023-04-10'),
+(28, 2, 3.5, 'Run Boiiiiiiiii', '2023-04-10'),
+(1, 4, 4, 'I love it', '2023-04-18'),
+(11, 2, 5, 'KUY', '2023-04-20'),
+(4, 8, 5, 'Ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', '2023-04-21'),
+(19, 8, 3.5, 'Red pill or Blue pill?', '2023-04-21'),
+(6, 8, 2.5, 'I am\nBATMAN!!!', '2023-04-21'),
+(22, 8, 3, 'what about eight', '2023-04-21'),
+(29, 5, 4, 'ดูจบแล้ว อยากให้แฟนนั่งวิลแชร์เลยคับ', '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -638,31 +666,31 @@ ALTER TABLE `written`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `ActorID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `ActorID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `director`
 --
 ALTER TABLE `director`
-  MODIFY `DirectorID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `DirectorID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `GenreID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `GenreID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `MovieID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `MovieID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `writer`

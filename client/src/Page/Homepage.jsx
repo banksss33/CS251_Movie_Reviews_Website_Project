@@ -92,7 +92,7 @@ function Hub() {
           <span className="d-block p-2 text-white carousel-head">
             <strong>NEW</strong>
           </span>
-          <ShowCarousel showFrom="ctList" label="New" />
+          <ShowCarousel showFrom="NewMovie" label="New" />
         </Container>
 
         <Container
@@ -105,7 +105,7 @@ function Hub() {
           <span className="d-block p-2 text-white carousel-head">
             <strong>POPULAR</strong>
           </span>
-          <ShowCarousel showFrom="ctList" label="New" />
+          <ShowCarousel showFrom="PopularMovie" label="New" />
         </Container>
 
         <Container
@@ -118,7 +118,7 @@ function Hub() {
           <span className="d-block p-2 text-white carousel-head">
             <strong>RANDOM</strong>
           </span>
-          <ShowCarousel showFrom="ctList" />
+          <ShowCarousel showFrom="RandMovie" />
         </Container>
       </div>
     </>
