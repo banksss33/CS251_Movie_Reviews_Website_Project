@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2023 at 10:55 AM
+-- Generation Time: May 23, 2023 at 10:50 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,7 +44,9 @@ INSERT INTO `account` (`UserID`, `username`, `password`) VALUES
 (5, 'test01', '123456789'),
 (6, 'test02', '123456789'),
 (7, 'test03', '123456789'),
-(8, 'test04', '123456789');
+(8, 'test04', '123456789'),
+(9, 'Zo om', '111111'),
+(10, 'test05', '123456789');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,7 @@ INSERT INTO `actor` (`ActorID`, `ActorName`, `ActorImageLink`) VALUES
 (2, 'Benedict Cumberbatch', 'https://th.bing.com/th/id/R.5872858638ca8afd1b73114df12b7d22?rik=TJ%2bdhJkNA1s7Hg&pid=ImgRaw&r=0'),
 (3, 'Elizabeth Chase Olsen', 'https://th.bing.com/th/id/OIP.KChD7Arp5mlqo5QUb1AGywHaH-?pid=ImgDet&rs=1'),
 (4, 'Tim Robbins', 'https://th.bing.com/th/id/R.8d35060b13b499d14f6a11e4650448e0?rik=7%2fqzIZvpKrJbpA&pid=ImgRaw&r=0'),
-(5, 'Morgan Freeman', 'https://th.bing.com/th?id=OIF.pb0bu6ZwC%2brLZL9H8esYJg&pid=ImgDet&rs=1'),
+(5, 'Morgan Freeman', 'https://th.bing.com/th/id/R.a44c63d6b410df766cfab68ca291a092?rik=IRtR%2befKUn3xlg&pid=ImgRaw&r=0'),
 (6, 'Bob Gunton', 'https://th.bing.com/th/id/OIP.OV6JPw8DMGDy0m4CDh1ghAHaIQ?pid=ImgDet&rs=1'),
 (7, 'Marlon Brando', 'https://th.bing.com/th/id/OIP.EIPQiVafDEf_sai0M_gVlQHaJV?pid=ImgDet&rs=1'),
 (8, 'Al Pacino', 'https://i.pinimg.com/originals/26/d1/47/26d1471774e2eaa390ea3940a4913bc7.jpg'),
@@ -122,7 +124,7 @@ INSERT INTO `actor` (`ActorID`, `ActorName`, `ActorImageLink`) VALUES
 (57, 'Lionel Barrymore', 'https://images.fineartamerica.com/images-medium-large/lionel-barrymore-1878-1954-granger.jpg'),
 (58, 'Jodie Foster', 'https://th.bing.com/th/id/OIP.yuPEK8miKQ-0mOxWJTfiRQHaJF?pid=ImgDet&rs=1'),
 (59, 'Anthony Hopkins', 'https://th.bing.com/th/id/OIP.vXnWm3_wctT8pQaolK0ybAHaJb?pid=ImgDet&rs=1'),
-(60, 'Lawrence A. Bonney', 'https://www.wallofcelebrities.com/celebrity/lawrence-a-bonney/pictures/xxlarge/lawrence-a-bonney_3282565.jpg'),
+(60, 'Lawrence A. Bonney', 'https://th.bing.com/th/id/R.5ff9479793c7680a0ec24f08ff45f451?rik=OvM%2bFAfvmgC0lw&riu=http%3a%2f%2fwww.aveleyman.com%2fGallery%2f2017%2fB%2f38685.jpg&ehk=XAo5tdUXELAWUoSQS6mItLsgHDXykH96BkesjKLz2a0%3d&risl=&pid=ImgRaw&r=0'),
 (61, 'Matt Damon', 'https://th.bing.com/th/id/OIP.KZjOa9BmMBgOAPi27hzhCQHaKm?pid=ImgDet&rs=1'),
 (62, 'Tom Sizemore', 'https://th.bing.com/th/id/R.6e331cb800449392b3bcbd1e2912a807?rik=SoWaQcRobO8%2fmw&pid=ImgRaw&r=0'),
 (63, 'Alexandre Rodrigues', 'https://th.bing.com/th/id/OIP.AgkxpIMaML5-eFPXTzFGXgHaHa?pid=ImgDet&rs=1'),
@@ -523,7 +525,9 @@ INSERT INTO `profile` (`UserID`, `Email`, `Nickname`, `Firstname`, `Lastname`) V
 (5, 'kentnitikorn@gmail.com', 'ILoveCS251', 'heineken', 'Heisneky'),
 (6, 'Testsubject02@gmail.com', 'BigDaddy', 'testsubject', 'Delta'),
 (7, 'testsubject03@gmail.com', 'Little sister', 'test02', 'Gramma'),
-(8, 'test04@gmail.com', 'BigBoi', 'test04', 'sigma');
+(8, 'test04@gmail.com', 'BigBoi', 'test04', 'sigma'),
+(9, 'Chocomint_Sundea@gmail.com', 'Sundea', 'Zoom', 'ZAZA'),
+(10, 'nitikorn.tha@dome.tu.ac.t', 'กางมุ้งรอ', 'สุดหล่อ', 'คิ้วดก');
 
 -- --------------------------------------------------------
 
@@ -553,7 +557,12 @@ INSERT INTO `review` (`MovieID`, `UserID`, `Score`, `review`, `Date`) VALUES
 (19, 8, 3.5, 'Red pill or Blue pill?', '2023-04-21'),
 (6, 8, 2.5, 'I am\nBATMAN!!!', '2023-04-21'),
 (22, 8, 3, 'what about eight', '2023-04-21'),
-(29, 5, 4, 'ดูจบแล้ว อยากให้แฟนนั่งวิลแชร์เลยคับ', '2023-04-22');
+(29, 5, 4, 'ดูจบแล้ว อยากให้แฟนนั่งวิลแชร์เลยคับ', '2023-04-22'),
+(2, 9, 0.5, 'ไม่เคยดู แต่ให้คะแนนไว้ก่อน', '2023-04-26'),
+(29, 9, 0, '2', '2023-04-26'),
+(4, 9, 5, 'คนดำในหนัง ให้เต็มเลย', '2023-04-26'),
+(29, 9, 3, 'ชอบคนพิการ', '2023-04-26'),
+(22, 9, 3, 'ขอความเป็นธรรมให้ฆาตกรด้วยครับ มีgoreด้วยให้+2', '2023-04-26');
 
 -- --------------------------------------------------------
 
@@ -666,7 +675,7 @@ ALTER TABLE `written`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `actor`

@@ -6,6 +6,8 @@ import "boxicons";
 import { Link, redirect } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
+import Swal from "sweetalert2";
+
 function SignIn() {
   // Register
   const [regValid, setRegValid] = useState([]);
@@ -52,7 +54,8 @@ function SignIn() {
     } else {
       setEmailMessage("");
     }
-  };
+
+  }
 
   // Valid Nickname
   const [nickNameMessage, setNickNameMessage] = useState("");
@@ -75,7 +78,7 @@ function SignIn() {
 
   const validateUsername = (event) => {
     const enteredUsername = event.target.value;
-    setUsername = event.target.value;
+    setUsername(enteredUsername);
     const isUsernameUsed = regValid.some(
       (val) => val.Username === enteredUsername
     );
@@ -108,6 +111,38 @@ function SignIn() {
     setPasswordS(event.target.value);
   };
 
+
+  const loginSuccessPop = () => {
+    Swal.fire({
+      title: 'Successfully',
+      text: 'Your Welcome',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleRefresh();
+      }
+    });
+  };
+
+  const loginFailPop = () => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No matching username or password',
+    })
+  }
+
+  const registerFailPop = () => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Can not crate your account',
+      text: 'email or nickname or username has been used',
+    })
+  }
+
   const validateLogIn = () => {
     const loginSuccess = signInValid.some(
       (val) => val.username === usernameS && val.password === passwordS
@@ -117,13 +152,14 @@ function SignIn() {
         (val) => val.username === usernameS
       );
       localStorage.setItem("yourName", loggedInUser.Nickname);
+      loginSuccessPop();
       console.log("Login successful")
     } else {
       localStorage.setItem("yourName", "");
+      loginFailPop();
       console.log("mismatch account or password")
     }
 
-    handleRefresh();
   };
 
     const handleRefresh = () => {
@@ -138,20 +174,27 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Call registration API with form data
-      const response = await axios.post("http://localhost:3001/Register", {
-        account: { username, password },
-        profile: { email, firstname, lastname, nickname },
-      });
 
-      // Handle successful registration
-      console.log(response.data);
-    } catch (error) {
-      // Handle registration error
-      console.log(error.response.data);
-      setError("Error registering user!");
+    if (emailMessage === "" && nickNameMessage === ""){
+      try {
+        // Call registration API with form data
+        const response = await axios.post("http://localhost:3001/Register", {
+          account: { username, password },
+          profile: { email, firstname, lastname, nickname },
+        });
+  
+        // Handle successful registration
+        console.log(response.data);
+      } catch (error) {
+        // Handle registration error
+        console.log(error.response.data);
+        setError("Error registering user!");
+      }
+      handleRefresh();
+    } else {
+      registerFailPop();
     }
+
   };
 
   return (
@@ -290,7 +333,7 @@ function SignIn() {
                     type="text"
                     required
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value) }
                   />
                   <label>username</label>
                   <p>{usernameMessage}</p>
@@ -308,7 +351,7 @@ function SignIn() {
                   <label>password</label>
                 </div>
 
-                <button type="submit" className="btnS" onClick={handleRefresh}>
+                <button type="submit" className="btnS" >
                   Sign Up
                 </button>
 

@@ -29,10 +29,11 @@ function Showall() {
   };
 
   return (
-    <div
+    <body
       style={{
         backgroundColor: "rgb(0,22,22)",
         padding: "5% 8%",
+        paddingBottom: "450px"
       }}
     >
       <Container>
@@ -81,7 +82,7 @@ function Showall() {
           selectedGenre={selectedGenre}
         />
       </Container>
-    </div>
+    </body>
   );
 }
 

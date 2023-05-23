@@ -214,13 +214,16 @@ app.get("/getReview", (req, res) => {
     `,
     (err, result) => {
       if (err) {
-        console.log(err + "select movie list error");
+        console.log(err + "select review list error");
       } else {
         res.send(result);
       }
     }
   );
 });
+
+// get Average Review Score
+// Reuse average score in searchbar
 
 // send review
 app.post("/rateMovie", (req, res) => {
@@ -236,7 +239,9 @@ app.post("/rateMovie", (req, res) => {
     [mid, nickName, Score, review],
     (err, result) => {
       if (err) {
-        console.log(err + "send review rating error" + mid + nickName + Score + review);
+        console.log(
+          err + "send review rating error" + mid + nickName + Score + review
+        );
       } else {
         res.send(result);
       }
@@ -295,7 +300,7 @@ app.post("/Register", async (req, res) => {
   const lastname = req.body.profile.lastname;
   const nickname = req.body.profile.nickname;
   const saltRounds = 10;
-  const passwordHash = String(password)
+  const passwordHash = String(password);
   // insert the data into the 'users' table
   try {
     const connection = db;

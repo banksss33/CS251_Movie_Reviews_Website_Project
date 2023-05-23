@@ -26,6 +26,7 @@ function Moviepage() {
   const [movieList, setmovieList] = useState([]);
   const [directorList, setdirectorList] = useState([]);
   const [actorList, setactorList] = useState([]);
+  const [avgScoreList, setAvgScoreList] = useState([]);
 
   useEffect(() => {
     const getmovie = () => {
@@ -46,9 +47,16 @@ function Moviepage() {
       });
     };
 
+    const getAvgScore = () => {
+      axios.get("http://localhost:3001/averageScore").then((response) => {
+        setAvgScoreList(response.data);
+      });
+    };
+
     getmovie();
     getdirector();
     getactor();
+    getAvgScore();
   }, []);
 
   let Param = useParams();
@@ -56,6 +64,13 @@ function Moviepage() {
   return (
     <body className="body d-flex">
       <Container>
+        {avgScoreList.map((val) => {
+          if (val.MovieID === ID) {
+            return (
+              <h1>{val.average_score}</h1>
+            )
+          }
+        })}
         {movieList.map((val) => {
           // to show all the movie title
           if (val.MovieID === ID) {
