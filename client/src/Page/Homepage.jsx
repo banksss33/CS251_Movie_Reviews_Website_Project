@@ -63,8 +63,8 @@ function Hub() {
               }}
               className="text-warning "
             >
-              <LinkContainer to="/SignIn" className="btn btn-outline-warning">
-                <Link>SignIn</Link>
+              <LinkContainer to="/SignIn" className="py-3 px-5 btn btn-warning">
+                <Link className="fs-5">SignIn</Link>
               </LinkContainer>
             </animated.div>
             <animated.div

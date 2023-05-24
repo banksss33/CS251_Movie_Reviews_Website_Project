@@ -348,6 +348,12 @@ app.get("/getMovies", (req, res) => {
     case "Oldest":
       sortQuery = "ORDER BY movie.Year ASC";
       break;
+    case "HScore":
+      sortQuery = "ORDER BY AVG(review.Score) DESC";
+      break;
+    case "LScore":
+      sortQuery = "ORDER BY AVG(review.Score) ASC";
+      break;     
     default:
       sortQuery = "";
   }
@@ -356,7 +362,10 @@ app.get("/getMovies", (req, res) => {
   switch (genre) {
     case "All":
       var sql = `
-    SELECT MovieID, Title, ImageLink FROM movie ${sortQuery} ;
+      SELECT movie.MovieID, Title, ImageLink
+      FROM movie 
+      LEFT OUTER JOIN review ON movie.MovieID=review.MovieID 
+      GROUP BY MovieID ${sortQuery} ;
     `;
       break;
 

@@ -22,10 +22,18 @@ function Showall() {
 
   const handleGenreSelect = (genre) => {
     setSelectedGenre(genre);
+
+    if (genre === "All") {
+      handleSortSelect("Default");
+    }
   };
 
   const handleSortSelect = (sort) => {
     setSelectedSort(sort);
+
+    if (sort === "HScore" || sort === "LScore") {
+      handleGenreSelect("All");
+    }
   };
 
   return (
@@ -69,6 +77,12 @@ function Showall() {
                 </DropdownItem>
                 <DropdownItem onClick={() => handleSortSelect("Oldest")}>
                   Oldest
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSortSelect("HScore")}>
+                  Highest average score
+                </DropdownItem>
+                <DropdownItem onClick={() => handleSortSelect("LScore")}>
+                  Lowest average score
                 </DropdownItem>
               </DropdownButton>
             </div>

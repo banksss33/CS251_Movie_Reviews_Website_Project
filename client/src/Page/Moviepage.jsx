@@ -67,7 +67,13 @@ function Moviepage() {
         {avgScoreList.map((val) => {
           if (val.MovieID === ID) {
             return (
-              <h1>{val.average_score}</h1>
+              <div className="d-flex flex-row-reverse text-end">
+                <h1 className="d-inline p-2 mb-4 text-white border-end border-warning border-4">
+                  {val.average_score}
+                </h1>
+                <h5><br/>Average score :</h5>
+              </div>
+              
             )
           }
         })}

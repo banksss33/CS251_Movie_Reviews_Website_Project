@@ -32,8 +32,8 @@ function ShowReview({ showFrom }) {
                         >
                           <Row>
                             <div className="col-sm-8 ps-5">
-                              <h5>{val.Nickname}</h5>
-                              <p>{val.Date}</p>
+                              <h4>{val.Nickname}</h4>
+                              <p className="ps-3">{val.Date}</p>
                             </div>
 
                             <div
@@ -43,7 +43,7 @@ function ShowReview({ showFrom }) {
                                 justifyContent: "right",
                               }}
                             >
-                              <p className="p-3">{val.Score}</p>
+                              <p className="p-3 fs-4">{val.Score}</p>
                               <img className="p-3" src="#" alt="popcorn" />
                             </div>
                           </Row>
@@ -56,7 +56,7 @@ function ShowReview({ showFrom }) {
                                 minHeight: "100px",
                               }}
                             >
-                              <p>{val.review}</p>
+                              <p className="ps-5">{val.review}</p>
                             </div>
                           </Row>
                         </div>
