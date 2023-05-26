@@ -22,10 +22,6 @@ function Showall() {
 
   const handleGenreSelect = (genre) => {
     setSelectedGenre(genre);
-
-    if (genre === "All") {
-      handleSortSelect("Default");
-    }
   };
 
   const handleSortSelect = (sort) => {

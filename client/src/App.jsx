@@ -72,7 +72,7 @@ function App() {
         }}
       >
         <LinkContainer to="/">
-          <Navbar.Brand>!ICON!</Navbar.Brand>
+          <Navbar.Brand>Homepage</Navbar.Brand>
         </LinkContainer>
 
         <Nav>

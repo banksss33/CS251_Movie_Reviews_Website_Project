@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
+import PopcornCoinRate from "./PopcornCoinRate";
 
 function ShowReview({ showFrom }) {
   const [reviewsList, setReviewsList] = useState([]);
@@ -44,7 +45,7 @@ function ShowReview({ showFrom }) {
                               }}
                             >
                               <p className="p-3 fs-4">{val.Score}</p>
-                              <img className="p-3" src="#" alt="popcorn" />
+                              <PopcornCoinRate score={val.Score}/>
                             </div>
                           </Row>
                           <hr />

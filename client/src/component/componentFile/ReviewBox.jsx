@@ -4,6 +4,7 @@ import "../style/reviewbox.css";
 import Popcorn from "./popcornRate";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import PopcornCoinRate from "./PopcornCoinRate";
 
 const ReviewBox = ({movieID}) => {
 
@@ -82,8 +83,12 @@ const ReviewBox = ({movieID}) => {
         }}
       >
         <Row>
-          <div className="ps-5">
-            <h3>{localStorage.getItem("yourName")} {reviewScore}</h3>
+          <div className="d-flex justify-content-between ps-5">
+            <div>
+              <h3>{localStorage.getItem("yourName")} {reviewScore}</h3>
+              <PopcornCoinRate score={reviewScore}/>
+            </div>
+            
             <div className="position-relative d-flex-right">
             <input
               style={{

@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import ReviewBox from "../component/componentFile/ReviewBox";
 import "../component/style/MoviePage.css"
 import ShowReview from "../component/componentFile/ShowReview";
+import PopcornCoinRate from "../component/componentFile/PopcornCoinRate";
 
 //import from Cloudinary
 import { Cloudinary } from "@cloudinary/url-gen/instance/Cloudinary";
@@ -68,8 +69,9 @@ function Moviepage() {
           if (val.MovieID === ID) {
             return (
               <div className="d-flex flex-row-reverse text-end">
+                <PopcornCoinRate score={val.average_score}/>
                 <h1 className="d-inline p-2 mb-4 text-white border-end border-warning border-4">
-                  {val.average_score}
+                  {val.average_score.toFixed(1)}
                 </h1>
                 <h5><br/>Average score :</h5>
               </div>
