@@ -138,7 +138,7 @@ function SignIn() {
   const registerFailPop = () => {
     Swal.fire({
       icon: 'error',
-      title: 'Can not crate your account',
+      title: 'Can\'t create your account',
       text: 'email or nickname or username has been used',
     })
   }
