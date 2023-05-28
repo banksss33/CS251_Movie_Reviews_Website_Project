@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 10:50 AM
+-- Generation Time: May 28, 2023 at 05:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,7 +46,8 @@ INSERT INTO `account` (`UserID`, `username`, `password`) VALUES
 (7, 'test03', '123456789'),
 (8, 'test04', '123456789'),
 (9, 'Zo om', '111111'),
-(10, 'test05', '123456789');
+(10, 'test05', '123456789'),
+(11, 'test007lnw', 'sss123456');
 
 -- --------------------------------------------------------
 
@@ -527,7 +528,8 @@ INSERT INTO `profile` (`UserID`, `Email`, `Nickname`, `Firstname`, `Lastname`) V
 (7, 'testsubject03@gmail.com', 'Little sister', 'test02', 'Gramma'),
 (8, 'test04@gmail.com', 'BigBoi', 'test04', 'sigma'),
 (9, 'Chocomint_Sundea@gmail.com', 'Sundea', 'Zoom', 'ZAZA'),
-(10, 'nitikorn.tha@dome.tu.ac.t', 'กางมุ้งรอ', 'สุดหล่อ', 'คิ้วดก');
+(10, 'nitikorn.tha@dome.tu.ac.t', 'กางมุ้งรอ', 'สุดหล่อ', 'คิ้วดก'),
+(11, 'knight@gmail.com', 'The Knight', 'nitikorn', 'thanasutr');
 
 -- --------------------------------------------------------
 
@@ -540,7 +542,7 @@ CREATE TABLE `review` (
   `UserID` int(10) NOT NULL,
   `Score` float NOT NULL,
   `review` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Date` date NOT NULL
+  `Date` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -559,10 +561,11 @@ INSERT INTO `review` (`MovieID`, `UserID`, `Score`, `review`, `Date`) VALUES
 (22, 8, 3, 'what about eight', '2023-04-21'),
 (29, 5, 4, 'ดูจบแล้ว อยากให้แฟนนั่งวิลแชร์เลยคับ', '2023-04-22'),
 (2, 9, 0.5, 'ไม่เคยดู แต่ให้คะแนนไว้ก่อน', '2023-04-26'),
-(29, 9, 0, '2', '2023-04-26'),
 (4, 9, 5, 'คนดำในหนัง ให้เต็มเลย', '2023-04-26'),
 (29, 9, 3, 'ชอบคนพิการ', '2023-04-26'),
-(22, 9, 3, 'ขอความเป็นธรรมให้ฆาตกรด้วยครับ มีgoreด้วยให้+2', '2023-04-26');
+(22, 9, 3, 'ขอความเป็นธรรมให้ฆาตกรด้วยครับ มีgoreด้วยให้+2', '2023-04-26'),
+(2, 7, 5, 'หล่อค่ะ ชอบมาก', '2023-05-24'),
+(2, 2, 4.5, 'CG ดรอปลงมาก', '2023-05-26');
 
 -- --------------------------------------------------------
 
@@ -675,7 +678,7 @@ ALTER TABLE `written`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `actor`
